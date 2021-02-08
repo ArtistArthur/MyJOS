@@ -57,16 +57,79 @@ static const char *trapname(int trapno)
 		return "System call";
 	return "(unknown trap)";
 }
-
-
+// Set up a normal interrupt/trap gate descriptor.
+// - istrap: 1 for a trap (= exception) gate, 0 for an interrupt gate.
+//   see section 9.6.1.3 of the i386 reference: "The difference between
+//   an interrupt gate and a trap gate is in the effect on IF (the
+//   interrupt-enable flag). An interrupt that vectors through an
+//   interrupt gate resets IF, thereby preventing other interrupts from
+//   interfering with the current interrupt handler. A subsequent IRET
+//   instruction restores IF to the value in the EFLAGS image on the
+//   stack. An interrupt through a trap gate does not change IF."
+// - sel: Code segment selector for interrupt/trap handler
+// - off: Offset in code segment for interrupt/trap handler
+// - dpl: Descriptor Privilege Level -
+//	  the privilege level required for software to invoke
+//	  this interrupt/trap gate explicitly using an int instruction.
+/*	#define SETGATE(gate, istrap, sel, off, dpl)             \
+	{                                                    \
+		(gate).gd_off_15_0 = (uint32_t)(off)&0xffff;     \
+		(gate).gd_sel = (sel);                           \
+		(gate).gd_args = 0;                              \
+		(gate).gd_rsv1 = 0;                              \
+		(gate).gd_type = (istrap) ? STS_TG32 : STS_IG32; \
+		(gate).gd_s = 0;                                 \
+		(gate).gd_dpl = (dpl);                           \
+		(gate).gd_p = 1;                                 \
+		(gate).gd_off_31_16 = (uint32_t)(off) >> 16;     \
+	}
+*/
 void
 trap_init(void)
 {
 	extern struct Segdesc gdt[];
 
 	// LAB 3: Your code here.
+	//declare traphandler
+	void traphd0();
+	void traphd1();
+	void traphd2();
+	void traphd3();
+	void traphd4();
+	void traphd5();
+	void traphd6();
+	void traphd7();
+	void traphd8();
+	void traphd9();
+	void traphd10();
+	void traphd11();
+	void traphd12();
+	void traphd13();
+	void traphd14();
+	void traphd16();
+	void trap_system_call();
+	//set gate
+	//should be GD_KT because this is belong to text segment
+	SETGATE(idt[0], 1, GD_KT, traphd0, 0);
+	SETGATE(idt[1], 1, GD_KT, traphd1, 0);
+	SETGATE(idt[2], 1, GD_KT, traphd2, 0);
+	SETGATE(idt[3], 0, GD_KT, traphd3, 3);//user can also use this
+	SETGATE(idt[4], 1, GD_KT, traphd4, 0);
+	SETGATE(idt[5], 1, GD_KT, traphd5, 0);
+	SETGATE(idt[6], 1, GD_KT, traphd6, 0);
+	SETGATE(idt[7], 1, GD_KT, traphd7, 0);
+	SETGATE(idt[8], 1, GD_KT, traphd8, 0);
+	SETGATE(idt[9], 1, GD_KT, traphd9, 0);
+	SETGATE(idt[10], 1, GD_KT, traphd10, 0);
+	SETGATE(idt[11], 1, GD_KT, traphd11, 0);
+	SETGATE(idt[12], 1, GD_KT, traphd12, 0);
+	SETGATE(idt[13], 1, GD_KT, traphd13, 0);
+	SETGATE(idt[14],1, GD_KT, traphd14, 0);
+	SETGATE(idt[16], 1, GD_KT, traphd16, 0);
 
-	// Per-CPU setup 
+	SETGATE(idt[48], 0, GD_KT, trap_system_call, 3);
+
+	// Per-CPU setup
 	trap_init_percpu();
 }
 
@@ -145,23 +208,37 @@ trap_dispatch(struct Trapframe *tf)
 	// Handle processor exceptions.
 	// LAB 3: Your code here.
 
+	if(tf->tf_trapno==T_PGFLT)
+	{
+		page_fault_handler(tf);
+		return;//needed?
+	}
+	if(tf->tf_trapno==T_BRKPT)
+	{
+		monitor(tf);//see definition of monitor()
+	}
+	if(tf->tf_trapno==T_SYSCALL)
+	{
+		tf->tf_regs.reg_eax=syscall(tf->tf_regs.reg_eax, tf->tf_regs.reg_edx, tf->tf_regs.reg_ecx, tf->tf_regs.reg_ebx, tf->tf_regs.reg_edi, tf->tf_regs.reg_esi);
+		return;
+	}
 	// Unexpected trap: The user process or the kernel has a bug.
 	print_trapframe(tf);
 	if (tf->tf_cs == GD_KT)
-		panic("unhandled trap in kernel");
+		panic("unhandled trap in kernel");//如果引发异常的代码是内核代码,且未能被处理
 	else {
-		env_destroy(curenv);
+		env_destroy(curenv);//defaut process,除0错误等,或者未设置处理过程的异常
 		return;
 	}
 }
 
 void
-trap(struct Trapframe *tf)
+trap(struct Trapframe *tf)//通过esp传递
 {
 	// The environment may have set DF and some versions
 	// of GCC rely on DF being clear
 	asm volatile("cld" ::: "cc");
-
+	cprintf("get in trap.\n");
 	// Check that interrupts are disabled.  If this assertion
 	// fails, DO NOT be tempted to fix it by inserting a "cli" in
 	// the interrupt path.
@@ -176,7 +253,7 @@ trap(struct Trapframe *tf)
 		// Copy trap frame (which is currently on the stack)
 		// into 'curenv->env_tf', so that running the environment
 		// will restart at the trap point.
-		curenv->env_tf = *tf;
+		curenv->env_tf = *tf;//把用户上下文保存进tf
 		// The trapframe on the stack should be ignored from here on.
 		tf = &curenv->env_tf;
 	}
@@ -200,18 +277,21 @@ page_fault_handler(struct Trapframe *tf)
 	uint32_t fault_va;
 
 	// Read processor's CR2 register to find the faulting address
-	fault_va = rcr2();
+	fault_va = rcr2();//read cr2
 
 	// Handle kernel-mode page faults.
 
 	// LAB 3: Your code here.
+	if ((tf->tf_cs & 3) == 0)
+	{
+		panic("page fault in kernel mode.\n");
+	}
+		// We've already handled kernel-mode exceptions, so if we get here,
+		// the page fault happened in user mode.
 
-	// We've already handled kernel-mode exceptions, so if we get here,
-	// the page fault happened in user mode.
-
-	// Destroy the environment that caused the fault.
-	cprintf("[%08x] user fault va %08x ip %08x\n",
-		curenv->env_id, fault_va, tf->tf_eip);
+		// Destroy the environment that caused the fault.
+		cprintf("[%08x] user fault va %08x ip %08x\n",
+				curenv->env_id, fault_va, tf->tf_eip);
 	print_trapframe(tf);
 	env_destroy(curenv);
 }

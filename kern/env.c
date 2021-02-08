@@ -116,7 +116,15 @@ env_init(void)
 {
 	// Set up envs array
 	// LAB 3: Your code here.
+	size_t i = 0;
+	env_free_list = envs;
+	for (i = 0; i < NENV-1; i++)
+	{
+		envs[i].env_link = envs + i + 1;
+		envs[i].env_id = 0;
 
+	}
+	(envs + NENV - 1)->env_link = NULL;
 	// Per-CPU part of the initialization
 	env_init_percpu();
 }
@@ -180,6 +188,9 @@ env_setup_vm(struct Env *e)
 
 	// LAB 3: Your code here.
 
+	e->env_pgdir =(pde_t*) page2kva(p);
+	memcpy(e->env_pgdir, kern_pgdir, PGSIZE);
+	p->pp_ref++;
 	// UVPT maps the env's own page table read-only.
 	// Permissions: kernel R, user R
 	e->env_pgdir[PDX(UVPT)] = PADDR(e->env_pgdir) | PTE_P | PTE_U;
@@ -267,6 +278,18 @@ region_alloc(struct Env *e, void *va, size_t len)
 	//   'va' and 'len' values that are not page-aligned.
 	//   You should round va down, and round (va + len) up.
 	//   (Watch out for corner-cases!)
+	void *low = ROUNDDOWN(va, PGSIZE);//向下取整,即把va所在的那一页全部映射,从va前面页面对齐开始
+	void *up = ROUNDUP(va + len, PGSIZE);//向上取整
+	for (; low < up;low+=PGSIZE)
+	{
+		struct PageInfo *p = page_alloc(0);
+		if(!p)
+		{
+			panic("region_alloc error: region_alloc failed!\n");
+		}
+		p->pp_ref++;
+		page_insert(e->env_pgdir, p, low, PTE_W|PTE_U);
+	}
 }
 
 //
@@ -323,11 +346,31 @@ load_icode(struct Env *e, uint8_t *binary)
 	//  What?  (See env_run() and env_pop_tf() below.)
 
 	// LAB 3: Your code here.
+	struct Elf *elfhdr = (struct Elf *)binary;
+	if(elfhdr->e_magic!=ELF_MAGIC)
+	{
+		panic("this is not valid binary file\n");
+	}
+	struct Proghdr *ph = (struct Proghdr*)((uint8_t*)elfhdr+elfhdr->e_phoff);
+	int ph_num = elfhdr->e_phnum;
+	lcr3(PADDR(e->env_pgdir));
+	for (int i = 0; i < ph_num;i++)
+	{
+		if (ph[i].p_type == ELF_PROG_LOAD)
+		{
+			region_alloc(e, (void *)ph[i].p_va, ph[i].p_memsz);
+			memset((void *)ph[i].p_va, 0, ph[i].p_memsz);
+			memcpy((void *)ph[i].p_va, binary + ph[i].p_offset, ph[i].p_filesz);
+		}
+	}
 
+	lcr3(PADDR(kern_pgdir));
+	e->env_tf.tf_eip = elfhdr->e_entry;
 	// Now map one page for the program's initial stack
 	// at virtual address USTACKTOP - PGSIZE.
 
 	// LAB 3: Your code here.
+	region_alloc(e, (void *)USTACKTOP - PGSIZE, PGSIZE);
 }
 
 //
@@ -341,6 +384,13 @@ void
 env_create(uint8_t *binary, enum EnvType type)
 {
 	// LAB 3: Your code here.
+	struct Env *e;
+	if (env_alloc(&e,0)!=0)
+	{
+		panic("env_create failed!\n");
+	}
+	load_icode(e, binary);
+	e->env_type = type;
 }
 
 //
@@ -419,6 +469,7 @@ env_destroy(struct Env *e)
 void
 env_pop_tf(struct Trapframe *tf)
 {
+	cprintf("env_pop_tf begins.\n");
 	asm volatile(
 		"\tmovl %0,%%esp\n"
 		"\tpopal\n"
@@ -439,6 +490,7 @@ env_pop_tf(struct Trapframe *tf)
 void
 env_run(struct Env *e)
 {
+	cprintf("env_run begins.\n");
 	// Step 1: If this is a context switch (a new environment is running):
 	//	   1. Set the current environment (if any) back to
 	//	      ENV_RUNNABLE if it is ENV_RUNNING (think about
@@ -457,7 +509,17 @@ env_run(struct Env *e)
 	//	e->env_tf to sensible values.
 
 	// LAB 3: Your code here.
+	if(curenv!=NULL)
+	{
+		if(curenv->env_status==ENV_RUNNING)
+		curenv->env_status = ENV_RUNNABLE;
 
-	panic("env_run not yet implemented");
+	}
+	curenv = e;
+	curenv->env_status = ENV_RUNNING;
+	curenv->env_runs++;
+	lcr3(PADDR(curenv->env_pgdir));
+	env_pop_tf(&curenv->env_tf);
+	//panic("env_run not yet implemented");
 }
 
