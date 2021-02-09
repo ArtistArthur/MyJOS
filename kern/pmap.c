@@ -134,6 +134,11 @@ void mem_init(void)
 
 	//////////////////////////////////////////////////////////////////////
 	// create initial page directory.
+	extern char end[];
+	cprintf("end: %x\n", end);
+	cprintf("sizeof(Trapframe)=%d.\n", sizeof(struct Trapframe));
+	cprintf("boot_alloc a page for kern_pgdir\n");
+	cprintf("bootstack=%08x, bootstacktop=%08x, ebp=%08x, &n=%08x\n", bootstack, bootstacktop, read_ebp(), &n);
 	kern_pgdir = (pde_t *)boot_alloc(PGSIZE);
 	memset(kern_pgdir, 0, PGSIZE);
 
@@ -157,8 +162,9 @@ void mem_init(void)
 	// to initialize all fields of each struct PageInfo to 0.
 	// Your code goes here:
 	//pages 256K=64pages
-	cprintf("sizeof(struct PageInfo*)=%u, pages=%x, sizeof(struct PageInfo)*npages=%uK\n",
-			sizeof(struct PageInfo *), pages, sizeof(struct PageInfo) * npages / 1024);
+	cprintf("sizeof(struct PageInfo*)=%u, sizeof(struct PageInfo)=%u, pages=%x, sizeof(struct PageInfo)*npages=%uK\n",
+			sizeof(struct PageInfo *), sizeof(struct PageInfo), pages, sizeof(struct PageInfo) * npages / 1024);
+	cprintf("boot_alloc pages for pages\n");
 	pages = (struct PageInfo *)boot_alloc(sizeof(struct PageInfo) * npages);
 	cprintf("pages=%x\n", pages);
 	memset(pages, 0, sizeof(struct PageInfo) * npages);
@@ -166,9 +172,10 @@ void mem_init(void)
 	//////////////////////////////////////////////////////////////////////
 	// Make 'envs' point to an array of size 'NENV' of 'struct Env'.
 	// LAB 3: Your code here.
+	cprintf("boot_alloc a page for envs\n");
 	envs = (struct Env *)boot_alloc(sizeof(struct Env) * NENV);
-	cprintf("sizeof(struct Env*)=%u, envs=%x, sizeof(struct Env)*NENV=%uK\n",
-			sizeof(struct Env *), envs, sizeof(struct Env) * NENV / 1024);
+	cprintf("sizeof(struct Env*)=%u, envs=%x,sizeof(struct Env)=%u, NENV=%u, sizeof(struct Env)*NENV=%uK\n",
+			sizeof(struct Env *), envs, sizeof(struct Env),NENV, sizeof(struct Env) * NENV / 1024);
 	memset(envs, 0, sizeof(struct Env) * NENV);
 	//////////////////////////////////////////////////////////////////////
 	// Now that we've allocated the initial kernel data structures, we set
@@ -193,14 +200,20 @@ void mem_init(void)
 	//    - pages itself -- kernel RW, user NONE
 	// Your code goes here:
 	//将pages映射到虚拟地址UPAGES
+	//pages数组有256K,PTSIZE=4MB,因此有空位,会把pages后面紧接着的放进去
+	//sizeof(struct PageInfo*)=4, sizeof(struct PageInfo)=8, pages=0, sizeof(struct PageInfo)*npages=256K
+	//实际上如果有4GB的内存,4GB=4K*2^20,则需要2^20 *8 =8MB的大小
+	cprintf("map kern_pgdir`s UPAGES as pages(maped size 4MB):\n");
 	boot_map_region(kern_pgdir, UPAGES, PTSIZE, PADDR(pages), PTE_U | PTE_P);
 	//////////////////////////////////////////////////////////////////////
-	// Map the 'envs' array read-only by the user at linear address UENVS
+	// Map the 'envs' array read-only by the user at linear address UENVS 以便于用户进程读取相关信息
 	// (ie. perm = PTE_U | PTE_P).
 	// Permissions:
 	//    - the new image at UENVS  -- kernel R, user R
 	//    - envs itself -- kernel RW, user NONE
 	// LAB 3: Your code here.
+	//sizeof(struct Env*)=4, envs=f01d1000,sizeof(struct Env)=96, NENV=1024, sizeof(struct Env)*NENV=96K
+	cprintf("map kern_pgdir`s UENVS as envs(maped size 4MB):\n");
 	boot_map_region(kern_pgdir, UENVS, PTSIZE, PADDR(envs), PTE_P|PTE_U);
 
 	//////////////////////////////////////////////////////////////////////
@@ -214,7 +227,11 @@ void mem_init(void)
 	//       overwrite memory.  Known as a "guard page".
 	//     Permissions: kernel RW, user NONE
 	// Your code goes here:
+	//32k
+	//进程的内核栈
+	cprintf("map kern_pgdir`s kernelstack as bootstack=%8x.\n",bootstack);
 	boot_map_region(kern_pgdir, KSTACKTOP - KSTKSIZE, KSTKSIZE, PADDR(bootstack), PTE_P | PTE_W);
+	//cprintf("bootstack=%x\n", bootstack);
 	//////////////////////////////////////////////////////////////////////
 	// Map all of physical memory at KERNBASE.
 	// Ie.  the VA range [KERNBASE, 2^32) should map to
@@ -223,7 +240,10 @@ void mem_init(void)
 	// we just set up the mapping anyway.
 	// Permissions: kernel RW, user NONE
 	// Your code goes here:
-
+	cprintf("map kern_pgdir`s KERNBASE=%x as %08x,  size=%08xB=%dMB.\n", 
+	KERNBASE,0, 0xffffffff - KERNBASE, (0xffffff-KERNBASE)/(1024*1024));
+	//映射了但是没有分配,即可以被内核访问,却没有被使用,可以申请使用
+	//否则会出现,申请了某片内存却无法使用
 	boot_map_region(kern_pgdir, KERNBASE, 0xffffffff - KERNBASE, 0, PTE_P | PTE_W);
 	// Check that the initial page directory has been set up correctly.
 	check_kern_pgdir();
@@ -282,12 +302,14 @@ void page_init(void)
 	// NB: DO NOT actually touch the physical memory corresponding to
 	// free pages!
 	//at beginning page_free_list=0
+	cprintf("page_init begins\n");
 	size_t i;
 	size_t io_hole_start = (size_t)IOPHYSMEM / PGSIZE;
 	size_t kern_end = (size_t)PADDR(boot_alloc(0)) / PGSIZE;
+	//这是倒过来的,page_free_list指向最后
 	for (i = 0; i < npages; i++)
 	{
-		if (i == 0)
+		if (i == 0)//第一个page为idt和bios保留
 		{
 			pages[i].pp_ref = 1;
 			pages[i].pp_link = NULL;
@@ -304,6 +326,8 @@ void page_init(void)
 			page_free_list = &pages[i];
 		}
 	}
+	cprintf("page_free_list=%x, %ust page, page va=%x\n", page_free_list, page_free_list - pages, page2pa(page_free_list) + KERNBASE);
+	cprintf("page_init ends\n");
 }
 
 //
@@ -323,7 +347,13 @@ page_alloc(int alloc_flags)
 {
 	// Fill this function in
 	struct PageInfo *result = page_free_list;
-	cprintf("page_free_list=%x, %dst page\n", page_free_list, page_free_list - pages);
+	//当page_free_list=0时,page_free_list-pages:
+	//减法即加被减数的取反+1,于是结果为pages+1,然后地址运算要除以类型大小,这里为8
+	//因此结果为: 0-0xf0191000=0+~0xf0191000+1=266,792,960,再除以8=33349120
+	//或者说是0xffffffff-pages+1  / 8 ,因此会超过kva上限
+	cprintf("page_alloc: page_free_list=%x, %ust page, page va=%x\n", page_free_list, page_free_list - pages, page2pa(page_free_list) + KERNBASE);
+
+	//cprintf("page_free_list=%x, %dst page, page vd=\n", page_free_list, page_free_list - pages,);
 	if (result == NULL)
 	{
 		cprintf("page_alloc:out of free memory\n");
@@ -351,6 +381,7 @@ void page_free(struct PageInfo *pp)
 	{
 		panic("page_free: pp->pp_ref is nonzero or pp->pp_link is not NULL!\n");
 	}
+	cprintf("page_free:%x, %dst page, page vd:%x\n", pp, pp-pages, page2kva(pp));
 	pp->pp_link = page_free_list;
 	page_free_list = pp;
 	return;
@@ -391,6 +422,7 @@ void page_decref(struct PageInfo *pp)
 pte_t *
 pgdir_walk(pde_t *pgdir, const void *va, int create)
 {
+	//cprintf("pgdir_walk: \n");
 	// Fill this function in
 	pde_t *pde_ptr = pgdir + PDX(va);
 	struct PageInfo *pg;
@@ -430,6 +462,7 @@ pgdir_walk(pde_t *pgdir, const void *va, int create)
 static void
 boot_map_region(pde_t *pgdir, uintptr_t va, size_t size, physaddr_t pa, int perm)//对物理页面的操作权限
 {
+	cprintf("boot_map_region:\n");
 	// Fill this function in
 	size_t i, cnt = size / PGSIZE;
 	if (size % PGSIZE != 0)
@@ -443,6 +476,7 @@ boot_map_region(pde_t *pgdir, uintptr_t va, size_t size, physaddr_t pa, int perm
 		{
 			panic("boot_map_region(): out of memory\n");
 		}
+		//cprintf("boot_map_region va=%x, pa=%8x\n", va, pa);
 		*pp = pa | perm | PTE_P;
 		va += PGSIZE;
 		pa += PGSIZE;
@@ -565,6 +599,89 @@ void tlb_invalidate(pde_t *pgdir, void *va)
 	invlpg(va);
 }
 
+static uintptr_t user_mem_check_addr;
+
+//
+// Check that an environment is allowed to access the range of memory
+// [va, va+len) with permissions 'perm | PTE_P'.
+// Normally 'perm' will contain PTE_U at least, but this is not required.
+// 'va' and 'len' need not be page-aligned; you must test every page that
+// contains any of that range.  You will test either 'len/PGSIZE',
+// 'len/PGSIZE + 1', or 'len/PGSIZE + 2' pages.
+//
+// A user program can access a virtual address if (1) the address is below
+// ULIM, and (2) the page table gives it permission.  These are exactly
+// the tests you should implement here.
+//
+// If there is an error, set the 'user_mem_check_addr' variable to the first
+// erroneous virtual address.
+//
+// Returns 0 if the user program can access this range of addresses,
+// and -E_FAULT otherwise.
+//
+/*
+int user_mem_check(struct Env *env, const void *va, size_t len, int perm)
+{
+	// LAB 3: Your code here.
+	size_t pgnums = len / PGSIZE;
+	if((char*)va%PGSIZE!=0)
+	{
+		pgnums++;
+	}
+	if(((char*)va+len)%PGSIZE!=0)
+	{
+		pgnums++;
+	}
+	for (int i = 0; i < pgnums;i++)
+	{
+		pte_t *pte = pgdir_walk(&e->env_pgdir, va, 0);
+		if (va>=ULIM||pte==NULL||(*pte & perm)!=perm)
+		{
+			return (int)va;
+		}
+		va += PGSIZE;
+	}
+		return 0;
+}
+*/
+int user_mem_check(struct Env *env, const void *va, size_t len, int perm)
+{
+	// LAB 3: Your code here.
+	cprintf("user_mem_check va: %x, len: %x\n", va, len);
+	uint32_t begin = (uint32_t)ROUNDDOWN(va, PGSIZE);
+	uint32_t end = (uint32_t)ROUNDUP(va + len, PGSIZE);
+	uint32_t i;
+	for (i = (uint32_t)begin; i < end; i += PGSIZE)
+	{
+		pte_t *pte = pgdir_walk(env->env_pgdir, (void *)i, 0);
+		if ((i >= ULIM) || !pte || !(*pte & PTE_P) || ((*pte & perm) != perm))
+		{																 //具体检测规则
+			user_mem_check_addr = (i < (uint32_t)va ? (uint32_t)va : i); //记录无效的那个线性地址
+			return -E_FAULT;
+		}
+	}
+	cprintf("user_mem_check success va: %x, len: %x\n", va, len);
+	return 0;
+}
+
+//
+// Checks that environment 'env' is allowed to access the range
+// of memory [va, va+len) with permissions 'perm | PTE_U | PTE_P'.
+// If it can, then the function simply returns.
+// If it cannot, 'env' is destroyed and, if env is the current
+// environment, this function will not return.
+//
+void user_mem_assert(struct Env *env, const void *va, size_t len, int perm)
+{
+	if (user_mem_check(env, va, len, perm | PTE_U) < 0)
+	{
+		cprintf("[%08x] user_mem_check assertion failure for "
+				"va %08x\n",
+				env->env_id, user_mem_check_addr);
+		env_destroy(env); // may not return
+	}
+}
+
 // --------------------------------------------------------------
 // Checking functions.
 // --------------------------------------------------------------
@@ -588,16 +705,30 @@ check_page_free_list(bool only_low_memory)
 		// Move pages with lower addresses first in the free
 		// list, since entry_pgdir does not map all pages.
 		struct PageInfo *pp1, *pp2;
-		struct PageInfo **tp[2] = {&pp1, &pp2};
+		struct PageInfo **tp[2] = {&pp1, &pp2};//tp[0]的类型是pp->pp_link的地址
+		//pp1指向低地址内存代表,pp2指向高地址内存代表结构,分别形成一个链表
+		//tp[i]指向ppi这个链表的末尾的 PageInfo结构的pp->link,以便对其进行修改,或者说是尾指针
+		//但这个尾仍指向初始链表中的下一个,直到被修改,因此ppi的末尾都指向一个未知类型的,或者不同类型的
 		for (pp = page_free_list; pp; pp = pp->pp_link)
 		{
-			int pagetype = PDX(page2pa(pp)) >= pdx_limit;
+			int pagetype = PDX(page2pa(pp)) >= pdx_limit;//得到页目录编号,判断是否大于等于limit
 			*tp[pagetype] = pp;
 			tp[pagetype] = &pp->pp_link;
 		}
 		*tp[1] = 0;
 		*tp[0] = pp2;
 		page_free_list = pp1;
+		//最后分成两段:
+		//第一段是从低地址pdx_limit开始到第一个page,中间有截断,因为有kern预存的,第一个page,以及io hole
+		//具体数值是1023st ---489st(boot_alloc(0)的返回地址)紧接着是io hole-159st(因为640k处)---1st   0st被预留了
+		//第二段是从最高的page到pdxlimit
+		//具体数值是32767st---1024st
+	/*	cprintf("walk page_free_list:\n");
+		for (pp = page_free_list; pp; pp = pp->pp_link)
+		{
+			cprintf("pp=%x, %ust page, page_va=%x, page_pa=%x\n", pp, pp - pages, page2pa(pp) + KERNBASE, page2pa(pp));
+		}
+		*/
 	}
 
 	// if there's a page that shouldn't be on the free list,
