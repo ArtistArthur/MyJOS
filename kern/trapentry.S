@@ -44,13 +44,41 @@
 
 .text
 
+
+
 /*
  * Lab 3: Your code here for generating entry points for the different traps.
  */
+	TRAPHANDLER_NOEC(traphd0,0)
+	TRAPHANDLER_NOEC(traphd1,1)
+	TRAPHANDLER_NOEC(traphd2,2)
+	TRAPHANDLER_NOEC(traphd3,3)
+	TRAPHANDLER_NOEC(traphd4,4)
+	TRAPHANDLER_NOEC(traphd5,5)
+	TRAPHANDLER_NOEC(traphd6,6)
+	TRAPHANDLER_NOEC(traphd7,7)
+	TRAPHANDLER(traphd8,8)
+	TRAPHANDLER_NOEC(traphd9,9)
+	TRAPHANDLER(traphd10,10)
+	TRAPHANDLER(traphd11,11)
+	TRAPHANDLER(traphd12,12)
+	TRAPHANDLER(traphd13,13)
+	TRAPHANDLER(traphd14,14)
+	TRAPHANDLER_NOEC(traphd16,16)
 
-
+	TRAPHANDLER_NOEC(trap_system_call,48)
 
 /*
  * Lab 3: Your code here for _alltraps
  */
 
+_alltraps:
+	pushl %ds
+	pushl %es
+	pushal //压入eax 等通用寄存器
+	pushl $GD_KD
+	pushl $GD_KD
+	popl %ds
+	popl %es
+	pushl %esp //把trapframe的地址压入栈传给trap,指向trapframe的起始地址
+	call trap

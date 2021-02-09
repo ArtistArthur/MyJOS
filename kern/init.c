@@ -31,8 +31,15 @@ i386_init(void)
 	mem_init();
 
 	// Lab 3 user environment initialization functions
+	cprintf("env_init begins.\n");
+
 	env_init();
+
+	cprintf("env_init finished. trap_init begins\n");
+
 	trap_init();
+	
+	cprintf("trap_init finished.\n");
 
 	// Lab 4 multiprocessor initialization functions
 	mp_init();

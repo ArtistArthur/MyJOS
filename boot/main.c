@@ -108,17 +108,22 @@ waitdisk(void)
 		/* do nothing */;
 }
 
+//offset represents sector number begin from 0
 void
 readsect(void *dst, uint32_t offset)
 {
 	// wait for disk to be ready
 	waitdisk();
 
-	outb(0x1F2, 1);		// count = 1
+	outb(0x1F2, 1);		// count = 1  sector count
+	//out put sector number in 32bit 
+	//each time output 1 byte(8 bits)
 	outb(0x1F3, offset);
 	outb(0x1F4, offset >> 8);
 	outb(0x1F5, offset >> 16);
 	outb(0x1F6, (offset >> 24) | 0xE0);
+	//finally signal port 0xF7 by 0x20 
+	//represent read this sector
 	outb(0x1F7, 0x20);	// cmd 0x20 - read sectors
 
 	// wait for disk to be ready
