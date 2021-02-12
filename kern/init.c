@@ -89,6 +89,7 @@ boot_aps(void)
 			continue;
 
 		// Tell mpentry.S what stack to use 
+		//为什么cpu0的栈在最下面,不应该在最上面吗?
 		mpentry_kstack = percpu_kstacks[c - cpus] + KSTKSIZE;
 		// Start the CPU at mpentry_start
 		lapic_startap(c->cpu_id, PADDR(code));

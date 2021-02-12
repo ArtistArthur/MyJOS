@@ -344,7 +344,9 @@ void page_init(void)
 	//这是倒过来的,page_free_list指向最后
 	for (i = 0; i < npages; i++)
 	{
-		if (i == 0)//第一个page为idt和bios保留
+		//第一个page为idt和bios保留
+		//MPENTRY_PADDR所在page也保留
+		if (i == 0 || i == (MPENTRY_PADDR / PGSIZE)) 
 		{
 			pages[i].pp_ref = 1;
 			pages[i].pp_link = NULL;
@@ -666,7 +668,17 @@ mmio_map_region(physaddr_t pa, size_t size)
 	// Hint: The staff solution uses boot_map_region.
 	//
 	// Your code here:
-	panic("mmio_map_region not implemented");
+	size = ROUNDUP(size, PGSIZE);
+	pa = ROUNDDOWN(pa, PGSIZE);
+	if (base + size >= MMIOLIM)
+	{
+		panic("mmio_map_region overflow MMIOLIM!\n");
+	}
+	boot_map_region(kern_pgdir, base, size, pa, PTE_PCD | PTE_PWT | PTE_W);
+	base += size;
+	//panic("mmio_map_region not implemented");
+	//返回此次映射的base
+	return (void *)(base - size);
 }
 
 static uintptr_t user_mem_check_addr;
