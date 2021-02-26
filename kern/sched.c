@@ -29,9 +29,42 @@ sched_yield(void)
 	// below to halt the cpu.
 
 	// LAB 4: Your code here.
-
-	// sched_halt never returns
-	sched_halt();
+	/*
+	没有考虑curenv=NULL的时候
+	int index = ENVX(thiscpu->cpu_env->env_id);
+	for (int i = index+1,i%=NENV; i != index; i++, i %=NENV)
+	{
+		if (env[i].env_status == ENV_RUNNABLE)
+		{
+			env_run(env[i]);
+		}
+		if(i==index&&env[i]==ENV_RUNNING)
+		{
+			env_run(env[i]);
+		}
+	}
+	*/
+	int index = 0;
+	if (curenv!=NULL)
+	{
+		index = ENVX(curenv->env_id);
+	}
+	//从0开始,因为curenv->env_status==ENV_RUNNING
+	for (int i = 0; i < NENV; i++)
+	{
+		index += i;
+		index %= NENV;
+		if(envs[index].env_status==ENV_RUNNABLE)
+		{
+			env_run(&envs[index]);
+		}
+	}
+	if(curenv&&curenv->env_status==ENV_RUNNING)
+	{
+		env_run(curenv);
+	}
+		// sched_halt never returns
+		sched_halt();
 }
 
 // Halt this CPU when there is nothing to do. Wait until the

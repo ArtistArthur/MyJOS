@@ -83,9 +83,18 @@ sys_exofork(void)
 	// status is set to ENV_NOT_RUNNABLE, and the register set is copied
 	// from the current environment -- but tweaked so sys_exofork
 	// will appear to return 0.
-
+	//创建一个子进程，只设置好了结构体、页表的内核态、相关寄存器状态
 	// LAB 4: Your code here.
-	panic("sys_exofork not implemented");
+	struct Env *e = NULL;
+	int ret = env_alloc(&e, curenv->env_id);
+	if(ret<0)
+		return ret;
+	e->env_status = ENV_NOT_RUNNABLE;
+	e->env_tf = curenv->env_tf;
+	e->env_tf.tf_regs.reg_eax = 0;//通过设置eax返回0
+	return e->env_id;
+
+	//panic("sys_exofork not implemented");
 }
 
 // Set envid's env_status to status, which must be ENV_RUNNABLE
@@ -105,7 +114,13 @@ sys_env_set_status(envid_t envid, int status)
 	// envid's status.
 
 	// LAB 4: Your code here.
-	panic("sys_env_set_status not implemented");
+	struct Env *e = NULL;
+	int ret = envid2env(envid, &e, 1);
+	if(ret<0)
+		return ret;
+	e->env_status = status;
+	return 0;
+	//panic("sys_env_set_status not implemented");
 }
 
 // Set the page fault upcall for 'envid' by modifying the corresponding struct
@@ -150,7 +165,24 @@ sys_page_alloc(envid_t envid, void *va, int perm)
 	//   allocated!
 
 	// LAB 4: Your code here.
-	panic("sys_page_alloc not implemented");
+	//panic("sys_page_alloc not implemented");
+	struct Env *e = NULL;
+	int ret = envid2env(envid, &e, 1);
+	if(ret<0)
+		return -E_BAD_ENV;
+	//不知道为什么只判断(PTE_U | PTE_P)
+	//还可以写成if(~perm & (PTE_U | PTE_P))
+	if (va >= (void *)UTOP || ROUNDDOWN(va, PGSIZE) != va || (perm & (PTE_U | PTE_P)) != (PTE_U | PTE_P))
+		return -E_INVAL;
+	struct PageInfo *pp = page_alloc(1);
+	if (pp ==NULL)
+		return -E_NO_MEM;
+	if((ret=page_insert(e->env_pgdir,pp,va,perm))<0)
+	{
+		page_free(pp);
+		return ret;
+	}
+	return 0;
 }
 
 // Map the page of memory at 'srcva' in srcenvid's address space
@@ -181,7 +213,26 @@ sys_page_map(envid_t srcenvid, void *srcva,
 	//   check the current permissions on the page.
 
 	// LAB 4: Your code here.
-	panic("sys_page_map not implemented");
+	//panic("sys_page_map not implemented");
+	struct Env *srce = NULL;
+	struct Env *dste = NULL;
+	int src_ret = envid2env(srcenvid, &srce, 1);
+	int dst_ret = envid2env(dstenvid, &dste, 1);
+	if (src_ret < 0||dst_ret<0)
+		return -E_BAD_ENV;
+	if (srcva >= (void *)UTOP || ROUNDDOWN(srcva, PGSIZE) != srcva || dstva >= (void *)UTOP || ROUNDDOWN(dstva, PGSIZE) != dstva || (perm & (PTE_U | PTE_P)) != (PTE_U | PTE_P))
+		return -E_INVAL;
+	//	-E_INVAL is srcva is not mapped in srcenvid's address space.
+	//	-E_INVAL if (perm & PTE_W), but srcva is read-only in srcenvid's
+	//		address space.
+	//	-E_NO_MEM if there's no memory to allocate any necessary page tables.
+	pte_t *pte = NULL;
+	struct PageInfo *pp = page_lookup(srce->env_pgdir,
+									  srcva, &pte);
+	if (pte == NULL || ((*pte& PTE_W) == 0 && perm & PTE_W))
+		return -E_INVAL;
+	dst_ret = page_insert(dste->env_pgdir, pp, dstva, perm);
+	return dst_ret;
 }
 
 // Unmap the page of memory at 'va' in the address space of 'envid'.
@@ -197,7 +248,18 @@ sys_page_unmap(envid_t envid, void *va)
 	// Hint: This function is a wrapper around page_remove().
 
 	// LAB 4: Your code here.
-	panic("sys_page_unmap not implemented");
+	//panic("sys_page_unmap not implemented");
+	//	-E_BAD_ENV if environment envid doesn't currently exist,
+	//		or the caller doesn't have permission to change envid.
+	//	-E_INVAL if va >= UTOP, or va is not page-aligned.
+	struct Env *e = NULL;
+	int ret = envid2env(envid, &e, 1);
+	if (ret < 0)
+		return -E_BAD_ENV;
+	if (va >= (void *)UTOP || ROUNDDOWN(va, PGSIZE) != va )
+		return -E_INVAL;
+	page_remove(e->env_pgdir, va);
+	return 0;
 }
 
 // Try to send 'value' to the target env 'envid'.
@@ -273,20 +335,44 @@ syscall(uint32_t syscallno, uint32_t a1, uint32_t a2, uint32_t a3, uint32_t a4, 
 	// LAB 3: Your code here.
 
 	//panic("syscall not implemented");
+	int ret;
+	switch (syscallno)
+	{
 
-	switch (syscallno) {
-		
 	case SYS_cgetc:
-		return sys_cgetc();
+		 ret=sys_cgetc();
+		 break;
 	case SYS_cputs:
-		 sys_cputs((char*)a1, (size_t)a2);//注意lib下的syscall多了个check参数
-		 return 0;
+		sys_cputs((char *)a1, (size_t)a2); //注意lib下的syscall多了个check参数
+		 ret=0;
+		 break;
 	case SYS_env_destroy:
-		return sys_env_destroy((envid_t)a1);
+		 ret=sys_env_destroy((envid_t)a1);
+		 break;
 	case SYS_getenvid:
-		return sys_getenvid();
+		 ret=sys_getenvid();
+		 break;
+	case SYS_yield:
+		sys_yield();
+		ret= 0;
+		break;
+	case SYS_exofork:
+		ret=sys_exofork();
+		break;
+	case SYS_env_set_status:
+		ret = sys_env_set_status((envid_t)a1, (int)a2);
+		break;
+	case SYS_page_alloc:
+		ret = sys_page_alloc( (envid_t)a1, (void*)a2,(int)a3);
+		break;
+	case SYS_page_map:
+		ret = sys_page_map((envid_t)a1, (void *)a2, (envid_t)a3, (void *)a4, (int)a5);
+		break;
+	case SYS_page_unmap:
+		ret = sys_page_unmap((envid_t)a1, (void *)a2);
+		break;
 	default:
 		return -E_INVAL;
 	}
+	return ret;
 }
-

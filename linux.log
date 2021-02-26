@@ -1,0 +1,3514 @@
+qemu-system-i386 -drive file=obj/kern/kernel.img,index=0,media=disk,format=raw -serial mon:stdio -gdb tcp::25000 -D qemu.log -smp 4 
+VNC server running on `127.0.0.1:5900'
+6828 decimal is 15254 octal!
+Physical memory: 131072K available, base = 640K, extended = 130432K, npages =32768
+end: f0274008
+sizeof(Trapframe)=68.
+boot_alloc a page for kern_pgdir
+bootstack=f0118000, bootstacktop=f0120000, ebp=f011ffd8, &n=f011ffbc
+boot_alloc memory at f0275000, next memory allocate at f0276000
+sizeof(struct PageInfo*)=4, sizeof(struct PageInfo)=8, pages=0, sizeof(struct PageInfo)*npages=256K
+boot_alloc pages for pages
+boot_alloc memory at f0276000, next memory allocate at f02b6000
+pages=f0276000
+boot_alloc a page for envs
+boot_alloc memory at f02b6000, next memory allocate at f02d5000
+sizeof(struct Env*)=4, envs=f02b6000,sizeof(struct Env)=124, NENV=1024, sizeof(struct Env)*NENV=124K
+page_init begins
+boot_alloc memory at f02d5000, next memory allocate at f02d5000
+page_free_list=f02b5ff8, 32767st page, page va=f7fff000
+page_init ends
+boot_alloc memory at f02d5000, next memory allocate at f02d5000
+check_page_free_list() succeeded!
+number of free pages=32201
+page_alloc: page_free_list=f0277ff8, 1023st page, page va=f03ff000
+page_alloc: page_free_list=f0277ff0, 1022st page, page va=f03fe000
+page_alloc: page_free_list=f0277fe8, 1021st page, page va=f03fd000
+page_alloc: page_free_list=0, 33231872st page, page va=a1400000
+page_alloc:out of free memory
+page_free:f0277ff8, 1023st page, page vd:f03ff000
+page_free:f0277ff0, 1022st page, page vd:f03fe000
+page_free:f0277fe8, 1021st page, page vd:f03fd000
+page_alloc: page_free_list=f0277fe8, 1021st page, page va=f03fd000
+page_alloc: page_free_list=f0277ff0, 1022st page, page va=f03fe000
+page_alloc: page_free_list=f0277ff8, 1023st page, page va=f03ff000
+page_alloc: page_free_list=0, 33231872st page, page va=a1400000
+page_alloc:out of free memory
+page_free:f0277fe8, 1021st page, page vd:f03fd000
+page_alloc: page_free_list=f0277fe8, 1021st page, page va=f03fd000
+page_free:f0277fe8, 1021st page, page vd:f03fd000
+page_free:f0277ff0, 1022st page, page vd:f03fe000
+page_free:f0277ff8, 1023st page, page vd:f03ff000
+check_page_alloc() succeeded!
+page_alloc: page_free_list=f0277ff8, 1023st page, page va=f03ff000
+page_alloc: page_free_list=f0277ff0, 1022st page, page va=f03fe000
+page_alloc: page_free_list=f0277fe8, 1021st page, page va=f03fd000
+page_alloc: page_free_list=0, 33231872st page, page va=a1400000
+page_alloc:out of free memory
+page_alloc: page_free_list=0, 33231872st page, page va=a1400000
+page_alloc:out of free memory
+page_free:f0277ff8, 1023st page, page vd:f03ff000
+page_alloc: page_free_list=f0277ff8, 1023st page, page va=f03ff000
+page_alloc: page_free_list=0, 33231872st page, page va=a1400000
+page_alloc:out of free memory
+page_alloc: page_free_list=0, 33231872st page, page va=a1400000
+page_alloc:out of free memory
+page_alloc: page_free_list=0, 33231872st page, page va=a1400000
+page_alloc:out of free memory
+page_free:f0277fe8, 1021st page, page vd:f03fd000
+page_alloc: page_free_list=f0277fe8, 1021st page, page va=f03fd000
+page_free:f0277ff0, 1022st page, page vd:f03fe000
+page_alloc: page_free_list=f0277ff0, 1022st page, page va=f03fe000
+page_alloc: page_free_list=0, 33231872st page, page va=a1400000
+page_alloc:out of free memory
+page_free:f0277ff8, 1023st page, page vd:f03ff000
+page_alloc: page_free_list=f0277ff8, 1023st page, page va=f03ff000
+page_free:f0277ff8, 1023st page, page vd:f03ff000
+page_alloc: page_free_list=f0277ff8, 1023st page, page va=f03ff000
+page_free:f0277ff8, 1023st page, page vd:f03ff000
+page_free:f0277ff0, 1022st page, page vd:f03fe000
+page_free:f0277fe8, 1021st page, page vd:f03fd000
+boot_map_region:
+page_alloc: page_free_list=f0277fe8, 1021st page, page va=f03fd000
+boot_map_region:
+check_page() succeeded!
+map kern_pgdir`s UPAGES as pages(maped size 4MB):
+boot_map_region:
+page_alloc: page_free_list=f0277ff0, 1022st page, page va=f03fe000
+map kern_pgdir`s UENVS as envs(maped size 4MB):
+boot_map_region:
+page_alloc: page_free_list=f0277ff8, 1023st page, page va=f03ff000
+map kern_pgdir`s kernelstack as bootstack=f0118000.
+boot_map_region:
+page_alloc: page_free_list=f0277fe0, 1020st page, page va=f03fc000
+boot_map_region:
+boot_map_region:
+boot_map_region:
+boot_map_region:
+boot_map_region:
+boot_map_region:
+boot_map_region:
+boot_map_region:
+map kern_pgdir`s KERNBASE=f0000000 as 00000000,  size=0fffffffB=271MB.
+boot_map_region:
+page_alloc: page_free_list=f0277fd8, 1019st page, page va=f03fb000
+page_alloc: page_free_list=f0277fd0, 1018st page, page va=f03fa000
+page_alloc: page_free_list=f0277fc8, 1017st page, page va=f03f9000
+page_alloc: page_free_list=f0277fc0, 1016st page, page va=f03f8000
+page_alloc: page_free_list=f0277fb8, 1015st page, page va=f03f7000
+page_alloc: page_free_list=f0277fb0, 1014st page, page va=f03f6000
+page_alloc: page_free_list=f0277fa8, 1013st page, page va=f03f5000
+page_alloc: page_free_list=f0277fa0, 1012st page, page va=f03f4000
+page_alloc: page_free_list=f0277f98, 1011st page, page va=f03f3000
+page_alloc: page_free_list=f0277f90, 1010st page, page va=f03f2000
+page_alloc: page_free_list=f0277f88, 1009st page, page va=f03f1000
+page_alloc: page_free_list=f0277f80, 1008st page, page va=f03f0000
+page_alloc: page_free_list=f0277f78, 1007st page, page va=f03ef000
+page_alloc: page_free_list=f0277f70, 1006st page, page va=f03ee000
+page_alloc: page_free_list=f0277f68, 1005st page, page va=f03ed000
+page_alloc: page_free_list=f0277f60, 1004st page, page va=f03ec000
+page_alloc: page_free_list=f0277f58, 1003st page, page va=f03eb000
+page_alloc: page_free_list=f0277f50, 1002st page, page va=f03ea000
+page_alloc: page_free_list=f0277f48, 1001st page, page va=f03e9000
+page_alloc: page_free_list=f0277f40, 1000st page, page va=f03e8000
+page_alloc: page_free_list=f0277f38, 999st page, page va=f03e7000
+page_alloc: page_free_list=f0277f30, 998st page, page va=f03e6000
+page_alloc: page_free_list=f0277f28, 997st page, page va=f03e5000
+page_alloc: page_free_list=f0277f20, 996st page, page va=f03e4000
+page_alloc: page_free_list=f0277f18, 995st page, page va=f03e3000
+page_alloc: page_free_list=f0277f10, 994st page, page va=f03e2000
+page_alloc: page_free_list=f0277f08, 993st page, page va=f03e1000
+page_alloc: page_free_list=f0277f00, 992st page, page va=f03e0000
+page_alloc: page_free_list=f0277ef8, 991st page, page va=f03df000
+page_alloc: page_free_list=f0277ef0, 990st page, page va=f03de000
+page_alloc: page_free_list=f0277ee8, 989st page, page va=f03dd000
+page_alloc: page_free_list=f0277ee0, 988st page, page va=f03dc000
+page_alloc: page_free_list=f0277ed8, 987st page, page va=f03db000
+page_alloc: page_free_list=f0277ed0, 986st page, page va=f03da000
+page_alloc: page_free_list=f0277ec8, 985st page, page va=f03d9000
+page_alloc: page_free_list=f0277ec0, 984st page, page va=f03d8000
+page_alloc: page_free_list=f0277eb8, 983st page, page va=f03d7000
+page_alloc: page_free_list=f0277eb0, 982st page, page va=f03d6000
+page_alloc: page_free_list=f0277ea8, 981st page, page va=f03d5000
+page_alloc: page_free_list=f0277ea0, 980st page, page va=f03d4000
+page_alloc: page_free_list=f0277e98, 979st page, page va=f03d3000
+page_alloc: page_free_list=f0277e90, 978st page, page va=f03d2000
+page_alloc: page_free_list=f0277e88, 977st page, page va=f03d1000
+page_alloc: page_free_list=f0277e80, 976st page, page va=f03d0000
+page_alloc: page_free_list=f0277e78, 975st page, page va=f03cf000
+page_alloc: page_free_list=f0277e70, 974st page, page va=f03ce000
+page_alloc: page_free_list=f0277e68, 973st page, page va=f03cd000
+page_alloc: page_free_list=f0277e60, 972st page, page va=f03cc000
+page_alloc: page_free_list=f0277e58, 971st page, page va=f03cb000
+page_alloc: page_free_list=f0277e50, 970st page, page va=f03ca000
+page_alloc: page_free_list=f0277e48, 969st page, page va=f03c9000
+page_alloc: page_free_list=f0277e40, 968st page, page va=f03c8000
+page_alloc: page_free_list=f0277e38, 967st page, page va=f03c7000
+page_alloc: page_free_list=f0277e30, 966st page, page va=f03c6000
+page_alloc: page_free_list=f0277e28, 965st page, page va=f03c5000
+page_alloc: page_free_list=f0277e20, 964st page, page va=f03c4000
+page_alloc: page_free_list=f0277e18, 963st page, page va=f03c3000
+page_alloc: page_free_list=f0277e10, 962st page, page va=f03c2000
+page_alloc: page_free_list=f0277e08, 961st page, page va=f03c1000
+page_alloc: page_free_list=f0277e00, 960st page, page va=f03c0000
+page_alloc: page_free_list=f0277df8, 959st page, page va=f03bf000
+page_alloc: page_free_list=f0277df0, 958st page, page va=f03be000
+page_alloc: page_free_list=f0277de8, 957st page, page va=f03bd000
+page_alloc: page_free_list=f0277de0, 956st page, page va=f03bc000
+check pages array
+check phys mem
+check kernel stack
+check PDE permissions
+check_kern_pgdir() succeeded!
+boot_alloc memory at f02d5000, next memory allocate at f02d5000
+check_page_free_list() succeeded!
+page_alloc: page_free_list=f0277dd8, 955st page, page va=f03bb000
+page_alloc: page_free_list=f0277dd0, 954st page, page va=f03ba000
+page_alloc: page_free_list=f0277dc8, 953st page, page va=f03b9000
+page_free:f0277dd8, 955st page, page vd:f03bb000
+page_alloc: page_free_list=f0277dd8, 955st page, page va=f03bb000
+page_free:f0277dd0, 954st page, page vd:f03ba000
+page_free:f0277dc8, 953st page, page vd:f03b9000
+page_free:f0277dd8, 955st page, page vd:f03bb000
+check_page_installed_pgdir() succeeded!
+env_init begins.
+env_init finished. trap_init begins
+trap_init finished.
+SMP: CPU 0 found 4 CPU(s)
+boot_map_region:
+enabled interrupts: 1 2
+SMP: CPU 1 starting
+boot_map_region:
+SMP: CPU 2 starting
+boot_map_region:
+SMP: CPU 3 starting
+boot_map_region:
+page_alloc: page_free_list=f0277dd8, 955st page, page va=f03bb000
+[00000000] new env 00001000
+page_alloc: page_free_list=f0277dc8, 953st page, page va=f03b9000
+page_alloc: page_free_list=f0277dd0, 954st page, page va=f03ba000
+page_alloc: page_free_list=f0277dc0, 952st page, page va=f03b8000
+page_alloc: page_free_list=f0277db8, 951st page, page va=f03b7000
+page_alloc: page_free_list=f0277db0, 950st page, page va=f03b6000
+page_alloc: page_free_list=f0277da8, 949st page, page va=f03b5000
+page_alloc: page_free_list=f0277da0, 948st page, page va=f03b4000
+page_alloc: page_free_list=f0277d98, 947st page, page va=f03b3000
+page_alloc: page_free_list=f0277d90, 946st page, page va=f03b2000
+page_alloc: page_free_list=f0277d88, 945st page, page va=f03b1000
+page_alloc: page_free_list=f0277d80, 944st page, page va=f03b0000
+page_alloc: page_free_list=f0277d78, 943st page, page va=f03af000
+page_alloc: page_free_list=f0277d70, 942st page, page va=f03ae000
+get in trap.
+kernel panic on CPU 0 at kern/trap.c:358: page fault in kernel mode.
+
+Welcome to the JOS kernel monitor!
+Type 'help' for a list of commands.
+K> QEMU: Terminated
+qemu-system-i386 -drive file=obj/kern/kernel.img,index=0,media=disk,format=raw -serial mon:stdio -gdb tcp::25000 -D qemu.log -smp 1 
+VNC server running on `127.0.0.1:5900'
+6828 decimal is 15254 octal!
+Physical memory: 131072K available, base = 640K, extended = 130432K, npages =32768
+end: f0274008
+sizeof(Trapframe)=68.
+boot_alloc a page for kern_pgdir
+bootstack=f0118000, bootstacktop=f0120000, ebp=f011ffd8, &n=f011ffbc
+boot_alloc memory at f0275000, next memory allocate at f0276000
+sizeof(struct PageInfo*)=4, sizeof(struct PageInfo)=8, pages=0, sizeof(struct PageInfo)*npages=256K
+boot_alloc pages for pages
+boot_alloc memory at f0276000, next memory allocate at f02b6000
+pages=f0276000
+boot_alloc a page for envs
+boot_alloc memory at f02b6000, next memory allocate at f02d5000
+sizeof(struct Env*)=4, envs=f02b6000,sizeof(struct Env)=124, NENV=1024, sizeof(struct Env)*NENV=124K
+page_init begins
+boot_alloc memory at f02d5000, next memory allocate at f02d5000
+page_free_list=f02b5ff8, 32767st page, page va=f7fff000
+page_init ends
+boot_alloc memory at f02d5000, next memory allocate at f02d5000
+check_page_free_list() succeeded!
+number of free pages=32201
+page_alloc: page_free_list=f0277ff8, 1023st page, page va=f03ff000
+page_alloc: page_free_list=f0277ff0, 1022st page, page va=f03fe000
+page_alloc: page_free_list=f0277fe8, 1021st page, page va=f03fd000
+page_alloc: page_free_list=0, 33231872st page, page va=a1400000
+page_alloc:out of free memory
+page_free:f0277ff8, 1023st page, page vd:f03ff000
+page_free:f0277ff0, 1022st page, page vd:f03fe000
+page_free:f0277fe8, 1021st page, page vd:f03fd000
+page_alloc: page_free_list=f0277fe8, 1021st page, page va=f03fd000
+page_alloc: page_free_list=f0277ff0, 1022st page, page va=f03fe000
+page_alloc: page_free_list=f0277ff8, 1023st page, page va=f03ff000
+page_alloc: page_free_list=0, 33231872st page, page va=a1400000
+page_alloc:out of free memory
+page_free:f0277fe8, 1021st page, page vd:f03fd000
+page_alloc: page_free_list=f0277fe8, 1021st page, page va=f03fd000
+page_free:f0277fe8, 1021st page, page vd:f03fd000
+page_free:f0277ff0, 1022st page, page vd:f03fe000
+page_free:f0277ff8, 1023st page, page vd:f03ff000
+check_page_alloc() succeeded!
+page_alloc: page_free_list=f0277ff8, 1023st page, page va=f03ff000
+page_alloc: page_free_list=f0277ff0, 1022st page, page va=f03fe000
+page_alloc: page_free_list=f0277fe8, 1021st page, page va=f03fd000
+page_alloc: page_free_list=0, 33231872st page, page va=a1400000
+page_alloc:out of free memory
+page_alloc: page_free_list=0, 33231872st page, page va=a1400000
+page_alloc:out of free memory
+page_free:f0277ff8, 1023st page, page vd:f03ff000
+page_alloc: page_free_list=f0277ff8, 1023st page, page va=f03ff000
+page_alloc: page_free_list=0, 33231872st page, page va=a1400000
+page_alloc:out of free memory
+page_alloc: page_free_list=0, 33231872st page, page va=a1400000
+page_alloc:out of free memory
+page_alloc: page_free_list=0, 33231872st page, page va=a1400000
+page_alloc:out of free memory
+page_free:f0277fe8, 1021st page, page vd:f03fd000
+page_alloc: page_free_list=f0277fe8, 1021st page, page va=f03fd000
+page_free:f0277ff0, 1022st page, page vd:f03fe000
+page_alloc: page_free_list=f0277ff0, 1022st page, page va=f03fe000
+page_alloc: page_free_list=0, 33231872st page, page va=a1400000
+page_alloc:out of free memory
+page_free:f0277ff8, 1023st page, page vd:f03ff000
+page_alloc: page_free_list=f0277ff8, 1023st page, page va=f03ff000
+page_free:f0277ff8, 1023st page, page vd:f03ff000
+page_alloc: page_free_list=f0277ff8, 1023st page, page va=f03ff000
+page_free:f0277ff8, 1023st page, page vd:f03ff000
+page_free:f0277ff0, 1022st page, page vd:f03fe000
+page_free:f0277fe8, 1021st page, page vd:f03fd000
+boot_map_region:
+page_alloc: page_free_list=f0277fe8, 1021st page, page va=f03fd000
+boot_map_region:
+check_page() succeeded!
+map kern_pgdir`s UPAGES as pages(maped size 4MB):
+boot_map_region:
+page_alloc: page_free_list=f0277ff0, 1022st page, page va=f03fe000
+map kern_pgdir`s UENVS as envs(maped size 4MB):
+boot_map_region:
+page_alloc: page_free_list=f0277ff8, 1023st page, page va=f03ff000
+map kern_pgdir`s kernelstack as bootstack=f0118000.
+boot_map_region:
+page_alloc: page_free_list=f0277fe0, 1020st page, page va=f03fc000
+boot_map_region:
+boot_map_region:
+boot_map_region:
+boot_map_region:
+boot_map_region:
+boot_map_region:
+boot_map_region:
+boot_map_region:
+map kern_pgdir`s KERNBASE=f0000000 as 00000000,  size=0fffffffB=271MB.
+boot_map_region:
+page_alloc: page_free_list=f0277fd8, 1019st page, page va=f03fb000
+page_alloc: page_free_list=f0277fd0, 1018st page, page va=f03fa000
+page_alloc: page_free_list=f0277fc8, 1017st page, page va=f03f9000
+page_alloc: page_free_list=f0277fc0, 1016st page, page va=f03f8000
+page_alloc: page_free_list=f0277fb8, 1015st page, page va=f03f7000
+page_alloc: page_free_list=f0277fb0, 1014st page, page va=f03f6000
+page_alloc: page_free_list=f0277fa8, 1013st page, page va=f03f5000
+page_alloc: page_free_list=f0277fa0, 1012st page, page va=f03f4000
+page_alloc: page_free_list=f0277f98, 1011st page, page va=f03f3000
+page_alloc: page_free_list=f0277f90, 1010st page, page va=f03f2000
+page_alloc: page_free_list=f0277f88, 1009st page, page va=f03f1000
+page_alloc: page_free_list=f0277f80, 1008st page, page va=f03f0000
+page_alloc: page_free_list=f0277f78, 1007st page, page va=f03ef000
+page_alloc: page_free_list=f0277f70, 1006st page, page va=f03ee000
+page_alloc: page_free_list=f0277f68, 1005st page, page va=f03ed000
+page_alloc: page_free_list=f0277f60, 1004st page, page va=f03ec000
+page_alloc: page_free_list=f0277f58, 1003st page, page va=f03eb000
+page_alloc: page_free_list=f0277f50, 1002st page, page va=f03ea000
+page_alloc: page_free_list=f0277f48, 1001st page, page va=f03e9000
+page_alloc: page_free_list=f0277f40, 1000st page, page va=f03e8000
+page_alloc: page_free_list=f0277f38, 999st page, page va=f03e7000
+page_alloc: page_free_list=f0277f30, 998st page, page va=f03e6000
+page_alloc: page_free_list=f0277f28, 997st page, page va=f03e5000
+page_alloc: page_free_list=f0277f20, 996st page, page va=f03e4000
+page_alloc: page_free_list=f0277f18, 995st page, page va=f03e3000
+page_alloc: page_free_list=f0277f10, 994st page, page va=f03e2000
+page_alloc: page_free_list=f0277f08, 993st page, page va=f03e1000
+page_alloc: page_free_list=f0277f00, 992st page, page va=f03e0000
+page_alloc: page_free_list=f0277ef8, 991st page, page va=f03df000
+page_alloc: page_free_list=f0277ef0, 990st page, page va=f03de000
+page_alloc: page_free_list=f0277ee8, 989st page, page va=f03dd000
+page_alloc: page_free_list=f0277ee0, 988st page, page va=f03dc000
+page_alloc: page_free_list=f0277ed8, 987st page, page va=f03db000
+page_alloc: page_free_list=f0277ed0, 986st page, page va=f03da000
+page_alloc: page_free_list=f0277ec8, 985st page, page va=f03d9000
+page_alloc: page_free_list=f0277ec0, 984st page, page va=f03d8000
+page_alloc: page_free_list=f0277eb8, 983st page, page va=f03d7000
+page_alloc: page_free_list=f0277eb0, 982st page, page va=f03d6000
+page_alloc: page_free_list=f0277ea8, 981st page, page va=f03d5000
+page_alloc: page_free_list=f0277ea0, 980st page, page va=f03d4000
+page_alloc: page_free_list=f0277e98, 979st page, page va=f03d3000
+page_alloc: page_free_list=f0277e90, 978st page, page va=f03d2000
+page_alloc: page_free_list=f0277e88, 977st page, page va=f03d1000
+page_alloc: page_free_list=f0277e80, 976st page, page va=f03d0000
+page_alloc: page_free_list=f0277e78, 975st page, page va=f03cf000
+page_alloc: page_free_list=f0277e70, 974st page, page va=f03ce000
+page_alloc: page_free_list=f0277e68, 973st page, page va=f03cd000
+page_alloc: page_free_list=f0277e60, 972st page, page va=f03cc000
+page_alloc: page_free_list=f0277e58, 971st page, page va=f03cb000
+page_alloc: page_free_list=f0277e50, 970st page, page va=f03ca000
+page_alloc: page_free_list=f0277e48, 969st page, page va=f03c9000
+page_alloc: page_free_list=f0277e40, 968st page, page va=f03c8000
+page_alloc: page_free_list=f0277e38, 967st page, page va=f03c7000
+page_alloc: page_free_list=f0277e30, 966st page, page va=f03c6000
+page_alloc: page_free_list=f0277e28, 965st page, page va=f03c5000
+page_alloc: page_free_list=f0277e20, 964st page, page va=f03c4000
+page_alloc: page_free_list=f0277e18, 963st page, page va=f03c3000
+page_alloc: page_free_list=f0277e10, 962st page, page va=f03c2000
+page_alloc: page_free_list=f0277e08, 961st page, page va=f03c1000
+page_alloc: page_free_list=f0277e00, 960st page, page va=f03c0000
+page_alloc: page_free_list=f0277df8, 959st page, page va=f03bf000
+page_alloc: page_free_list=f0277df0, 958st page, page va=f03be000
+page_alloc: page_free_list=f0277de8, 957st page, page va=f03bd000
+page_alloc: page_free_list=f0277de0, 956st page, page va=f03bc000
+check pages array
+check phys mem
+check kernel stack
+check PDE permissions
+check_kern_pgdir() succeeded!
+boot_alloc memory at f02d5000, next memory allocate at f02d5000
+check_page_free_list() succeeded!
+page_alloc: page_free_list=f0277dd8, 955st page, page va=f03bb000
+page_alloc: page_free_list=f0277dd0, 954st page, page va=f03ba000
+page_alloc: page_free_list=f0277dc8, 953st page, page va=f03b9000
+page_free:f0277dd8, 955st page, page vd:f03bb000
+page_alloc: page_free_list=f0277dd8, 955st page, page va=f03bb000
+page_free:f0277dd0, 954st page, page vd:f03ba000
+page_free:f0277dc8, 953st page, page vd:f03b9000
+page_free:f0277dd8, 955st page, page vd:f03bb000
+check_page_installed_pgdir() succeeded!
+env_init begins.
+env_init finished. trap_init begins
+trap_init finished.
+SMP: CPU 0 found 1 CPU(s)
+boot_map_region:
+enabled interrupts: 1 2
+page_alloc: page_free_list=f0277dd8, 955st page, page va=f03bb000
+[00000000] new env 00001000
+page_alloc: page_free_list=f0277dc8, 953st page, page va=f03b9000
+page_alloc: page_free_list=f0277dd0, 954st page, page va=f03ba000
+page_alloc: page_free_list=f0277dc0, 952st page, page va=f03b8000
+page_alloc: page_free_list=f0277db8, 951st page, page va=f03b7000
+page_alloc: page_free_list=f0277db0, 950st page, page va=f03b6000
+page_alloc: page_free_list=f0277da8, 949st page, page va=f03b5000
+page_alloc: page_free_list=f0277da0, 948st page, page va=f03b4000
+page_alloc: page_free_list=f0277d98, 947st page, page va=f03b3000
+page_alloc: page_free_list=f0277d90, 946st page, page va=f03b2000
+page_alloc: page_free_list=f0277d88, 945st page, page va=f03b1000
+page_alloc: page_free_list=f0277d80, 944st page, page va=f03b0000
+page_alloc: page_free_list=f0277d78, 943st page, page va=f03af000
+page_alloc: page_free_list=f0277d70, 942st page, page va=f03ae000
+[00000000] new env 00001001
+page_alloc: page_free_list=f0277d68, 941st page, page va=f03ad000
+page_alloc: page_free_list=f0277d60, 940st page, page va=f03ac000
+page_alloc: page_free_list=f0277d58, 939st page, page va=f03ab000
+page_alloc: page_free_list=f0277d50, 938st page, page va=f03aa000
+page_alloc: page_free_list=f0277d48, 937st page, page va=f03a9000
+page_alloc: page_free_list=f0277d40, 936st page, page va=f03a8000
+page_alloc: page_free_list=f0277d38, 935st page, page va=f03a7000
+page_alloc: page_free_list=f0277d30, 934st page, page va=f03a6000
+page_alloc: page_free_list=f0277d28, 933st page, page va=f03a5000
+page_alloc: page_free_list=f0277d20, 932st page, page va=f03a4000
+page_alloc: page_free_list=f0277d18, 931st page, page va=f03a3000
+page_alloc: page_free_list=f0277d10, 930st page, page va=f03a2000
+page_alloc: page_free_list=f0277d08, 929st page, page va=f03a1000
+[00000000] new env 00001002
+page_alloc: page_free_list=f0277d00, 928st page, page va=f03a0000
+page_alloc: page_free_list=f0277cf8, 927st page, page va=f039f000
+page_alloc: page_free_list=f0277cf0, 926st page, page va=f039e000
+page_alloc: page_free_list=f0277ce8, 925st page, page va=f039d000
+page_alloc: page_free_list=f0277ce0, 924st page, page va=f039c000
+page_alloc: page_free_list=f0277cd8, 923st page, page va=f039b000
+page_alloc: page_free_list=f0277cd0, 922st page, page va=f039a000
+page_alloc: page_free_list=f0277cc8, 921st page, page va=f0399000
+page_alloc: page_free_list=f0277cc0, 920st page, page va=f0398000
+page_alloc: page_free_list=f0277cb8, 919st page, page va=f0397000
+page_alloc: page_free_list=f0277cb0, 918st page, page va=f0396000
+page_alloc: page_free_list=f0277ca8, 917st page, page va=f0395000
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 22
+user_mem_check success va: eebfde88, len: 22
+Hello, I am environment 00001000.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 22
+user_mem_check success va: eebfde88, len: 22
+Hello, I am environment 00001001.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 22
+user_mem_check success va: eebfde88, len: 22
+Hello, I am environment 00001002.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001001, iteration 0.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001002, iteration 0.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001001, iteration 1.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001002, iteration 1.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001001, iteration 2.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001002, iteration 2.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001001, iteration 3.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001002, iteration 3.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001001, iteration 4.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 22
+user_mem_check success va: eebfde88, len: 22
+All done in environment 00001001.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+[00001001] exiting gracefully
+[00001001] free env 00001001
+page_free:f0277d60, 940st page, page vd:f03ac000
+page_free:f0277d30, 934st page, page vd:f03a6000
+page_free:f0277d10, 930st page, page vd:f03a2000
+page_free:f0277d70, 942st page, page vd:f03ae000
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001000, iteration 0.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001002, iteration 4.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 22
+user_mem_check success va: eebfde88, len: 22
+All done in environment 00001002.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+[00001002] exiting gracefully
+[00001002] free env 00001002
+page_free:f0277cf8, 927st page, page vd:f039f000
+page_free:f0277cc8, 921st page, page vd:f0399000
+page_free:f0277ca8, 917st page, page vd:f0395000
+page_free:f0277d08, 929st page, page vd:f03a1000
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001000, iteration 1.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001000, iteration 2.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001000, iteration 3.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001000, iteration 4.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 22
+user_mem_check success va: eebfde88, len: 22
+All done in environment 00001000.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+[00001000] exiting gracefully
+[00001000] free env 00001000
+page_free:f0277dd0, 954st page, page vd:f03ba000
+page_free:f0277d98, 947st page, page vd:f03b3000
+page_free:f0277d78, 943st page, page vd:f03af000
+page_free:f0277dd8, 955st page, page vd:f03bb000
+No runnable environments in the system!
+Welcome to the JOS kernel monitor!
+Type 'help' for a list of commands.
+K> QEMU: Terminated
+qemu-system-i386 -drive file=obj/kern/kernel.img,index=0,media=disk,format=raw -serial mon:stdio -gdb tcp::25000 -D qemu.log -smp 2 
+VNC server running on `127.0.0.1:5900'
+6828 decimal is 15254 octal!
+Physical memory: 131072K available, base = 640K, extended = 130432K, npages =32768
+end: f0274008
+sizeof(Trapframe)=68.
+boot_alloc a page for kern_pgdir
+bootstack=f0118000, bootstacktop=f0120000, ebp=f011ffd8, &n=f011ffbc
+boot_alloc memory at f0275000, next memory allocate at f0276000
+sizeof(struct PageInfo*)=4, sizeof(struct PageInfo)=8, pages=0, sizeof(struct PageInfo)*npages=256K
+boot_alloc pages for pages
+boot_alloc memory at f0276000, next memory allocate at f02b6000
+pages=f0276000
+boot_alloc a page for envs
+boot_alloc memory at f02b6000, next memory allocate at f02d5000
+sizeof(struct Env*)=4, envs=f02b6000,sizeof(struct Env)=124, NENV=1024, sizeof(struct Env)*NENV=124K
+page_init begins
+boot_alloc memory at f02d5000, next memory allocate at f02d5000
+page_free_list=f02b5ff8, 32767st page, page va=f7fff000
+page_init ends
+boot_alloc memory at f02d5000, next memory allocate at f02d5000
+check_page_free_list() succeeded!
+number of free pages=32201
+page_alloc: page_free_list=f0277ff8, 1023st page, page va=f03ff000
+page_alloc: page_free_list=f0277ff0, 1022st page, page va=f03fe000
+page_alloc: page_free_list=f0277fe8, 1021st page, page va=f03fd000
+page_alloc: page_free_list=0, 33231872st page, page va=a1400000
+page_alloc:out of free memory
+page_free:f0277ff8, 1023st page, page vd:f03ff000
+page_free:f0277ff0, 1022st page, page vd:f03fe000
+page_free:f0277fe8, 1021st page, page vd:f03fd000
+page_alloc: page_free_list=f0277fe8, 1021st page, page va=f03fd000
+page_alloc: page_free_list=f0277ff0, 1022st page, page va=f03fe000
+page_alloc: page_free_list=f0277ff8, 1023st page, page va=f03ff000
+page_alloc: page_free_list=0, 33231872st page, page va=a1400000
+page_alloc:out of free memory
+page_free:f0277fe8, 1021st page, page vd:f03fd000
+page_alloc: page_free_list=f0277fe8, 1021st page, page va=f03fd000
+page_free:f0277fe8, 1021st page, page vd:f03fd000
+page_free:f0277ff0, 1022st page, page vd:f03fe000
+page_free:f0277ff8, 1023st page, page vd:f03ff000
+check_page_alloc() succeeded!
+page_alloc: page_free_list=f0277ff8, 1023st page, page va=f03ff000
+page_alloc: page_free_list=f0277ff0, 1022st page, page va=f03fe000
+page_alloc: page_free_list=f0277fe8, 1021st page, page va=f03fd000
+page_alloc: page_free_list=0, 33231872st page, page va=a1400000
+page_alloc:out of free memory
+page_alloc: page_free_list=0, 33231872st page, page va=a1400000
+page_alloc:out of free memory
+page_free:f0277ff8, 1023st page, page vd:f03ff000
+page_alloc: page_free_list=f0277ff8, 1023st page, page va=f03ff000
+page_alloc: page_free_list=0, 33231872st page, page va=a1400000
+page_alloc:out of free memory
+page_alloc: page_free_list=0, 33231872st page, page va=a1400000
+page_alloc:out of free memory
+page_alloc: page_free_list=0, 33231872st page, page va=a1400000
+page_alloc:out of free memory
+page_free:f0277fe8, 1021st page, page vd:f03fd000
+page_alloc: page_free_list=f0277fe8, 1021st page, page va=f03fd000
+page_free:f0277ff0, 1022st page, page vd:f03fe000
+page_alloc: page_free_list=f0277ff0, 1022st page, page va=f03fe000
+page_alloc: page_free_list=0, 33231872st page, page va=a1400000
+page_alloc:out of free memory
+page_free:f0277ff8, 1023st page, page vd:f03ff000
+page_alloc: page_free_list=f0277ff8, 1023st page, page va=f03ff000
+page_free:f0277ff8, 1023st page, page vd:f03ff000
+page_alloc: page_free_list=f0277ff8, 1023st page, page va=f03ff000
+page_free:f0277ff8, 1023st page, page vd:f03ff000
+page_free:f0277ff0, 1022st page, page vd:f03fe000
+page_free:f0277fe8, 1021st page, page vd:f03fd000
+boot_map_region:
+page_alloc: page_free_list=f0277fe8, 1021st page, page va=f03fd000
+boot_map_region:
+check_page() succeeded!
+map kern_pgdir`s UPAGES as pages(maped size 4MB):
+boot_map_region:
+page_alloc: page_free_list=f0277ff0, 1022st page, page va=f03fe000
+map kern_pgdir`s UENVS as envs(maped size 4MB):
+boot_map_region:
+page_alloc: page_free_list=f0277ff8, 1023st page, page va=f03ff000
+map kern_pgdir`s kernelstack as bootstack=f0118000.
+boot_map_region:
+page_alloc: page_free_list=f0277fe0, 1020st page, page va=f03fc000
+boot_map_region:
+boot_map_region:
+boot_map_region:
+boot_map_region:
+boot_map_region:
+boot_map_region:
+boot_map_region:
+boot_map_region:
+map kern_pgdir`s KERNBASE=f0000000 as 00000000,  size=0fffffffB=271MB.
+boot_map_region:
+page_alloc: page_free_list=f0277fd8, 1019st page, page va=f03fb000
+page_alloc: page_free_list=f0277fd0, 1018st page, page va=f03fa000
+page_alloc: page_free_list=f0277fc8, 1017st page, page va=f03f9000
+page_alloc: page_free_list=f0277fc0, 1016st page, page va=f03f8000
+page_alloc: page_free_list=f0277fb8, 1015st page, page va=f03f7000
+page_alloc: page_free_list=f0277fb0, 1014st page, page va=f03f6000
+page_alloc: page_free_list=f0277fa8, 1013st page, page va=f03f5000
+page_alloc: page_free_list=f0277fa0, 1012st page, page va=f03f4000
+page_alloc: page_free_list=f0277f98, 1011st page, page va=f03f3000
+page_alloc: page_free_list=f0277f90, 1010st page, page va=f03f2000
+page_alloc: page_free_list=f0277f88, 1009st page, page va=f03f1000
+page_alloc: page_free_list=f0277f80, 1008st page, page va=f03f0000
+page_alloc: page_free_list=f0277f78, 1007st page, page va=f03ef000
+page_alloc: page_free_list=f0277f70, 1006st page, page va=f03ee000
+page_alloc: page_free_list=f0277f68, 1005st page, page va=f03ed000
+page_alloc: page_free_list=f0277f60, 1004st page, page va=f03ec000
+page_alloc: page_free_list=f0277f58, 1003st page, page va=f03eb000
+page_alloc: page_free_list=f0277f50, 1002st page, page va=f03ea000
+page_alloc: page_free_list=f0277f48, 1001st page, page va=f03e9000
+page_alloc: page_free_list=f0277f40, 1000st page, page va=f03e8000
+page_alloc: page_free_list=f0277f38, 999st page, page va=f03e7000
+page_alloc: page_free_list=f0277f30, 998st page, page va=f03e6000
+page_alloc: page_free_list=f0277f28, 997st page, page va=f03e5000
+page_alloc: page_free_list=f0277f20, 996st page, page va=f03e4000
+page_alloc: page_free_list=f0277f18, 995st page, page va=f03e3000
+page_alloc: page_free_list=f0277f10, 994st page, page va=f03e2000
+page_alloc: page_free_list=f0277f08, 993st page, page va=f03e1000
+page_alloc: page_free_list=f0277f00, 992st page, page va=f03e0000
+page_alloc: page_free_list=f0277ef8, 991st page, page va=f03df000
+page_alloc: page_free_list=f0277ef0, 990st page, page va=f03de000
+page_alloc: page_free_list=f0277ee8, 989st page, page va=f03dd000
+page_alloc: page_free_list=f0277ee0, 988st page, page va=f03dc000
+page_alloc: page_free_list=f0277ed8, 987st page, page va=f03db000
+page_alloc: page_free_list=f0277ed0, 986st page, page va=f03da000
+page_alloc: page_free_list=f0277ec8, 985st page, page va=f03d9000
+page_alloc: page_free_list=f0277ec0, 984st page, page va=f03d8000
+page_alloc: page_free_list=f0277eb8, 983st page, page va=f03d7000
+page_alloc: page_free_list=f0277eb0, 982st page, page va=f03d6000
+page_alloc: page_free_list=f0277ea8, 981st page, page va=f03d5000
+page_alloc: page_free_list=f0277ea0, 980st page, page va=f03d4000
+page_alloc: page_free_list=f0277e98, 979st page, page va=f03d3000
+page_alloc: page_free_list=f0277e90, 978st page, page va=f03d2000
+page_alloc: page_free_list=f0277e88, 977st page, page va=f03d1000
+page_alloc: page_free_list=f0277e80, 976st page, page va=f03d0000
+page_alloc: page_free_list=f0277e78, 975st page, page va=f03cf000
+page_alloc: page_free_list=f0277e70, 974st page, page va=f03ce000
+page_alloc: page_free_list=f0277e68, 973st page, page va=f03cd000
+page_alloc: page_free_list=f0277e60, 972st page, page va=f03cc000
+page_alloc: page_free_list=f0277e58, 971st page, page va=f03cb000
+page_alloc: page_free_list=f0277e50, 970st page, page va=f03ca000
+page_alloc: page_free_list=f0277e48, 969st page, page va=f03c9000
+page_alloc: page_free_list=f0277e40, 968st page, page va=f03c8000
+page_alloc: page_free_list=f0277e38, 967st page, page va=f03c7000
+page_alloc: page_free_list=f0277e30, 966st page, page va=f03c6000
+page_alloc: page_free_list=f0277e28, 965st page, page va=f03c5000
+page_alloc: page_free_list=f0277e20, 964st page, page va=f03c4000
+page_alloc: page_free_list=f0277e18, 963st page, page va=f03c3000
+page_alloc: page_free_list=f0277e10, 962st page, page va=f03c2000
+page_alloc: page_free_list=f0277e08, 961st page, page va=f03c1000
+page_alloc: page_free_list=f0277e00, 960st page, page va=f03c0000
+page_alloc: page_free_list=f0277df8, 959st page, page va=f03bf000
+page_alloc: page_free_list=f0277df0, 958st page, page va=f03be000
+page_alloc: page_free_list=f0277de8, 957st page, page va=f03bd000
+page_alloc: page_free_list=f0277de0, 956st page, page va=f03bc000
+check pages array
+check phys mem
+check kernel stack
+check PDE permissions
+check_kern_pgdir() succeeded!
+boot_alloc memory at f02d5000, next memory allocate at f02d5000
+check_page_free_list() succeeded!
+page_alloc: page_free_list=f0277dd8, 955st page, page va=f03bb000
+page_alloc: page_free_list=f0277dd0, 954st page, page va=f03ba000
+page_alloc: page_free_list=f0277dc8, 953st page, page va=f03b9000
+page_free:f0277dd8, 955st page, page vd:f03bb000
+page_alloc: page_free_list=f0277dd8, 955st page, page va=f03bb000
+page_free:f0277dd0, 954st page, page vd:f03ba000
+page_free:f0277dc8, 953st page, page vd:f03b9000
+page_free:f0277dd8, 955st page, page vd:f03bb000
+check_page_installed_pgdir() succeeded!
+env_init begins.
+env_init finished. trap_init begins
+trap_init finished.
+SMP: CPU 0 found 2 CPU(s)
+boot_map_region:
+enabled interrupts: 1 2
+SMP: CPU 1 starting
+boot_map_region:
+page_alloc: page_free_list=f0277dd8, 955st page, page va=f03bb000
+[00000000] new env 00001000
+page_alloc: page_free_list=f0277dc8, 953st page, page va=f03b9000
+page_alloc: page_free_list=f0277dd0, 954st page, page va=f03ba000
+page_alloc: page_free_list=f0277dc0, 952st page, page va=f03b8000
+page_alloc: page_free_list=f0277db8, 951st page, page va=f03b7000
+page_alloc: page_free_list=f0277db0, 950st page, page va=f03b6000
+page_alloc: page_free_list=f0277da8, 949st page, page va=f03b5000
+page_alloc: page_free_list=f0277da0, 948st page, page va=f03b4000
+page_alloc: page_free_list=f0277d98, 947st page, page va=f03b3000
+page_alloc: page_free_list=f0277d90, 946st page, page va=f03b2000
+page_alloc: page_free_list=f0277d88, 945st page, page va=f03b1000
+page_alloc: page_free_list=f0277d80, 944st page, page va=f03b0000
+page_alloc: page_free_list=f0277d78, 943st page, page va=f03af000
+page_alloc: page_free_list=f0277d70, 942st page, page va=f03ae000
+[00000000] new env 00001001
+page_alloc: page_free_list=f0277d68, 941st page, page va=f03ad000
+page_alloc: page_free_list=f0277d60, 940st page, page va=f03ac000
+page_alloc: page_free_list=f0277d58, 939st page, page va=f03ab000
+page_alloc: page_free_list=f0277d50, 938st page, page va=f03aa000
+page_alloc: page_free_list=f0277d48, 937st page, page va=f03a9000
+page_alloc: page_free_list=f0277d40, 936st page, page va=f03a8000
+page_alloc: page_free_list=f0277d38, 935st page, page va=f03a7000
+page_alloc: page_free_list=f0277d30, 934st page, page va=f03a6000
+page_alloc: page_free_list=f0277d28, 933st page, page va=f03a5000
+page_alloc: page_free_list=f0277d20, 932st page, page va=f03a4000
+page_alloc: page_free_list=f0277d18, 931st page, page va=f03a3000
+page_alloc: page_free_list=f0277d10, 930st page, page va=f03a2000
+page_alloc: page_free_list=f0277d08, 929st page, page va=f03a1000
+[00000000] new env 00001002
+page_alloc: page_free_list=f0277d00, 928st page, page va=f03a0000
+page_alloc: page_free_list=f0277cf8, 927st page, page va=f039f000
+page_alloc: page_free_list=f0277cf0, 926st page, page va=f039e000
+page_alloc: page_free_list=f0277ce8, 925st page, page va=f039d000
+page_alloc: page_free_list=f0277ce0, 924st page, page va=f039c000
+page_alloc: page_free_list=f0277cd8, 923st page, page va=f039b000
+page_alloc: page_free_list=f0277cd0, 922st page, page va=f039a000
+page_alloc: page_free_list=f0277cc8, 921st page, page va=f0399000
+page_alloc: page_free_list=f0277cc0, 920st page, page va=f0398000
+page_alloc: page_free_list=f0277cb8, 919st page, page va=f0397000
+page_alloc: page_free_list=f0277cb0, 918st page, page va=f0396000
+page_alloc: page_free_list=f0277ca8, 917st page, page va=f0395000
+env_run begins.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 22
+user_mem_check success va: eebfde88, len: 22
+Hello, I am environment 00001000.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+user_mem_check va: eebfdenv_pop_tf begins.
+get in trap.
+e88, len: 22
+user_mem_check success va: eebfde88, len: 22
+Hello, I am environment 00001001.
+env_run begins.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001000, iteration 0.
+env_run begins.
+env_pop_tf begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+get in trap.
+user_meenv_pop_tf begins.
+get in trap.
+m_check va: eebfde88, len: 22
+user_mem_check success va: eebfde88, len: 22
+Hello, I am environment 00001002.
+env_run begins.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001001, iteration 0.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+env_pop_tf begins.
+get in trap.
+Back in environment 00001000, iteration 1.
+env_run begins.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001002, iteration 0.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+env_pop_tf begins.
+get in trap.
+Back in environment 00001001, iteration 1.
+env_run begins.
+user_mem_check va: eebfde88, len: 2b
+env_pop_tf begins.
+get in trap.
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001000, iteration 2.
+env_run begins.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001002, iteration 1.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success vaenv_pop_tf begins.
+get in trap.
+: eebfde88, len: 2b
+Back in environment 00001001, iteration 2.
+env_run begins.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001000, iteration 3.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001002, iteration 2.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Baget in trap.
+ck in environment 00001001, iteration 3.
+env_run begins.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001000, iteration 4.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 0000env_pop_tf begins.
+get in trap.
+1002, iteration 3.
+env_run begins.
+user_mem_check va: eebfde88, len: 22
+user_env_pop_tf begins.
+get in trap.
+mem_check success va: eebfde88, len: 22
+All done in environment 00001000.
+env_run begins.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+[00001000] exiting gracefully
+[00001000] free env 00001000
+page_free:f0277dd0, 954st page, page vd:f03ba000
+page_free:f0277d98, 947st page, page vd:f03b3000
+page_free:f0277d78, 943st page, page vd:f03af000
+page_free:f0277dd8, 955st page, page vd:f03bb000
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+uenv_pop_tf begins.
+get in trap.
+ser_mem_check success va: eebfde88, len: 2b
+Back in environment 00001001, iteration 4.
+env_run begins.
+user_mem_check va: eebfde88, leen: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001002, iteration 4.
+env_run begins.
+nv_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 22
+user_mem_check success va: eebfde88, len: 22
+All done in environment 00001001.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 22
+user_mem_check success va: eebfde88, len: 22
+All done in envirenv_pop_tf begins.
+get in trap.
+onment 00001002.
+env_run begins.
+[00001001] exiting gracefully
+[00001001] free env 00001001
+page_free:f0277d60, 940st page, page vd:f03ac000
+page_env_pop_tf begins.
+get in trap.
+free:f0277d30, 934st page, page vd:f03a6000
+page_free:f0277d10, 930st page, page vd:f03a2000
+page_free:f0277d70, 942st page, page vd:f03ae000
+[00001002] exiting gracefully
+[00001002] free env 00001002
+page_free:f0277cf8, 927st page, page vd:f039f000
+page_free:f0277cc8, 921st page, page vd:f0399000
+page_free:f0277ca8, 917st page, page vd:f0395000
+page_free:f0277d08, 929st page, page vd:f03a1000
+No runnable environments in the system!
+Welcome to the JOS kernel monitor!
+Type 'help' for a list of commands.
+K> QEMU: Terminated
++ cc kern/env.c
++ cc kern/syscall.c
++ cc kern/syscall.c
++ cc kern/syscall.c
++ cc kern/syscall.c
++ cc kern/syscall.c
++ cc kern/syscall.c
++ cc kern/syscall.c
++ cc kern/syscall.c
++ cc kern/syscall.c
++ ld obj/kern/kernel
++ mk obj/kern/kernel.img
+qemu-system-i386 -drive file=obj/kern/kernel.img,index=0,media=disk,format=raw -serial mon:stdio -gdb tcp::25000 -D qemu.log -smp 2 
+VNC server running on `127.0.0.1:5900'
+6828 decimal is 15254 octal!
+Physical memory: 131072K available, base = 640K, extended = 130432K, npages =32768
+end: f0274008
+sizeof(Trapframe)=68.
+boot_alloc a page for kern_pgdir
+bootstack=f0118000, bootstacktop=f0120000, ebp=f011ffd8, &n=f011ffbc
+boot_alloc memory at f0275000, next memory allocate at f0276000
+sizeof(struct PageInfo*)=4, sizeof(struct PageInfo)=8, pages=0, sizeof(struct PageInfo)*npages=256K
+boot_alloc pages for pages
+boot_alloc memory at f0276000, next memory allocate at f02b6000
+pages=f0276000
+boot_alloc a page for envs
+boot_alloc memory at f02b6000, next memory allocate at f02d5000
+sizeof(struct Env*)=4, envs=f02b6000,sizeof(struct Env)=124, NENV=1024, sizeof(struct Env)*NENV=124K
+page_init begins
+boot_alloc memory at f02d5000, next memory allocate at f02d5000
+page_free_list=f02b5ff8, 32767st page, page va=f7fff000
+page_init ends
+boot_alloc memory at f02d5000, next memory allocate at f02d5000
+check_page_free_list() succeeded!
+number of free pages=32201
+page_alloc: page_free_list=f0277ff8, 1023st page, page va=f03ff000
+page_alloc: page_free_list=f0277ff0, 1022st page, page va=f03fe000
+page_alloc: page_free_list=f0277fe8, 1021st page, page va=f03fd000
+page_alloc: page_free_list=0, 33231872st page, page va=a1400000
+page_alloc:out of free memory
+page_free:f0277ff8, 1023st page, page vd:f03ff000
+page_free:f0277ff0, 1022st page, page vd:f03fe000
+page_free:f0277fe8, 1021st page, page vd:f03fd000
+page_alloc: page_free_list=f0277fe8, 1021st page, page va=f03fd000
+page_alloc: page_free_list=f0277ff0, 1022st page, page va=f03fe000
+page_alloc: page_free_list=f0277ff8, 1023st page, page va=f03ff000
+page_alloc: page_free_list=0, 33231872st page, page va=a1400000
+page_alloc:out of free memory
+page_free:f0277fe8, 1021st page, page vd:f03fd000
+page_alloc: page_free_list=f0277fe8, 1021st page, page va=f03fd000
+page_free:f0277fe8, 1021st page, page vd:f03fd000
+page_free:f0277ff0, 1022st page, page vd:f03fe000
+page_free:f0277ff8, 1023st page, page vd:f03ff000
+check_page_alloc() succeeded!
+page_alloc: page_free_list=f0277ff8, 1023st page, page va=f03ff000
+page_alloc: page_free_list=f0277ff0, 1022st page, page va=f03fe000
+page_alloc: page_free_list=f0277fe8, 1021st page, page va=f03fd000
+page_alloc: page_free_list=0, 33231872st page, page va=a1400000
+page_alloc:out of free memory
+page_alloc: page_free_list=0, 33231872st page, page va=a1400000
+page_alloc:out of free memory
+page_free:f0277ff8, 1023st page, page vd:f03ff000
+page_alloc: page_free_list=f0277ff8, 1023st page, page va=f03ff000
+page_alloc: page_free_list=0, 33231872st page, page va=a1400000
+page_alloc:out of free memory
+page_alloc: page_free_list=0, 33231872st page, page va=a1400000
+page_alloc:out of free memory
+page_alloc: page_free_list=0, 33231872st page, page va=a1400000
+page_alloc:out of free memory
+page_free:f0277fe8, 1021st page, page vd:f03fd000
+page_alloc: page_free_list=f0277fe8, 1021st page, page va=f03fd000
+page_free:f0277ff0, 1022st page, page vd:f03fe000
+page_alloc: page_free_list=f0277ff0, 1022st page, page va=f03fe000
+page_alloc: page_free_list=0, 33231872st page, page va=a1400000
+page_alloc:out of free memory
+page_free:f0277ff8, 1023st page, page vd:f03ff000
+page_alloc: page_free_list=f0277ff8, 1023st page, page va=f03ff000
+page_free:f0277ff8, 1023st page, page vd:f03ff000
+page_alloc: page_free_list=f0277ff8, 1023st page, page va=f03ff000
+page_free:f0277ff8, 1023st page, page vd:f03ff000
+page_free:f0277ff0, 1022st page, page vd:f03fe000
+page_free:f0277fe8, 1021st page, page vd:f03fd000
+boot_map_region:
+page_alloc: page_free_list=f0277fe8, 1021st page, page va=f03fd000
+boot_map_region:
+check_page() succeeded!
+map kern_pgdir`s UPAGES as pages(maped size 4MB):
+boot_map_region:
+page_alloc: page_free_list=f0277ff0, 1022st page, page va=f03fe000
+map kern_pgdir`s UENVS as envs(maped size 4MB):
+boot_map_region:
+page_alloc: page_free_list=f0277ff8, 1023st page, page va=f03ff000
+map kern_pgdir`s kernelstack as bootstack=f0118000.
+boot_map_region:
+page_alloc: page_free_list=f0277fe0, 1020st page, page va=f03fc000
+boot_map_region:
+boot_map_region:
+boot_map_region:
+boot_map_region:
+boot_map_region:
+boot_map_region:
+boot_map_region:
+boot_map_region:
+map kern_pgdir`s KERNBASE=f0000000 as 00000000,  size=0fffffffB=271MB.
+boot_map_region:
+page_alloc: page_free_list=f0277fd8, 1019st page, page va=f03fb000
+page_alloc: page_free_list=f0277fd0, 1018st page, page va=f03fa000
+page_alloc: page_free_list=f0277fc8, 1017st page, page va=f03f9000
+page_alloc: page_free_list=f0277fc0, 1016st page, page va=f03f8000
+page_alloc: page_free_list=f0277fb8, 1015st page, page va=f03f7000
+page_alloc: page_free_list=f0277fb0, 1014st page, page va=f03f6000
+page_alloc: page_free_list=f0277fa8, 1013st page, page va=f03f5000
+page_alloc: page_free_list=f0277fa0, 1012st page, page va=f03f4000
+page_alloc: page_free_list=f0277f98, 1011st page, page va=f03f3000
+page_alloc: page_free_list=f0277f90, 1010st page, page va=f03f2000
+page_alloc: page_free_list=f0277f88, 1009st page, page va=f03f1000
+page_alloc: page_free_list=f0277f80, 1008st page, page va=f03f0000
+page_alloc: page_free_list=f0277f78, 1007st page, page va=f03ef000
+page_alloc: page_free_list=f0277f70, 1006st page, page va=f03ee000
+page_alloc: page_free_list=f0277f68, 1005st page, page va=f03ed000
+page_alloc: page_free_list=f0277f60, 1004st page, page va=f03ec000
+page_alloc: page_free_list=f0277f58, 1003st page, page va=f03eb000
+page_alloc: page_free_list=f0277f50, 1002st page, page va=f03ea000
+page_alloc: page_free_list=f0277f48, 1001st page, page va=f03e9000
+page_alloc: page_free_list=f0277f40, 1000st page, page va=f03e8000
+page_alloc: page_free_list=f0277f38, 999st page, page va=f03e7000
+page_alloc: page_free_list=f0277f30, 998st page, page va=f03e6000
+page_alloc: page_free_list=f0277f28, 997st page, page va=f03e5000
+page_alloc: page_free_list=f0277f20, 996st page, page va=f03e4000
+page_alloc: page_free_list=f0277f18, 995st page, page va=f03e3000
+page_alloc: page_free_list=f0277f10, 994st page, page va=f03e2000
+page_alloc: page_free_list=f0277f08, 993st page, page va=f03e1000
+page_alloc: page_free_list=f0277f00, 992st page, page va=f03e0000
+page_alloc: page_free_list=f0277ef8, 991st page, page va=f03df000
+page_alloc: page_free_list=f0277ef0, 990st page, page va=f03de000
+page_alloc: page_free_list=f0277ee8, 989st page, page va=f03dd000
+page_alloc: page_free_list=f0277ee0, 988st page, page va=f03dc000
+page_alloc: page_free_list=f0277ed8, 987st page, page va=f03db000
+page_alloc: page_free_list=f0277ed0, 986st page, page va=f03da000
+page_alloc: page_free_list=f0277ec8, 985st page, page va=f03d9000
+page_alloc: page_free_list=f0277ec0, 984st page, page va=f03d8000
+page_alloc: page_free_list=f0277eb8, 983st page, page va=f03d7000
+page_alloc: page_free_list=f0277eb0, 982st page, page va=f03d6000
+page_alloc: page_free_list=f0277ea8, 981st page, page va=f03d5000
+page_alloc: page_free_list=f0277ea0, 980st page, page va=f03d4000
+page_alloc: page_free_list=f0277e98, 979st page, page va=f03d3000
+page_alloc: page_free_list=f0277e90, 978st page, page va=f03d2000
+page_alloc: page_free_list=f0277e88, 977st page, page va=f03d1000
+page_alloc: page_free_list=f0277e80, 976st page, page va=f03d0000
+page_alloc: page_free_list=f0277e78, 975st page, page va=f03cf000
+page_alloc: page_free_list=f0277e70, 974st page, page va=f03ce000
+page_alloc: page_free_list=f0277e68, 973st page, page va=f03cd000
+page_alloc: page_free_list=f0277e60, 972st page, page va=f03cc000
+page_alloc: page_free_list=f0277e58, 971st page, page va=f03cb000
+page_alloc: page_free_list=f0277e50, 970st page, page va=f03ca000
+page_alloc: page_free_list=f0277e48, 969st page, page va=f03c9000
+page_alloc: page_free_list=f0277e40, 968st page, page va=f03c8000
+page_alloc: page_free_list=f0277e38, 967st page, page va=f03c7000
+page_alloc: page_free_list=f0277e30, 966st page, page va=f03c6000
+page_alloc: page_free_list=f0277e28, 965st page, page va=f03c5000
+page_alloc: page_free_list=f0277e20, 964st page, page va=f03c4000
+page_alloc: page_free_list=f0277e18, 963st page, page va=f03c3000
+page_alloc: page_free_list=f0277e10, 962st page, page va=f03c2000
+page_alloc: page_free_list=f0277e08, 961st page, page va=f03c1000
+page_alloc: page_free_list=f0277e00, 960st page, page va=f03c0000
+page_alloc: page_free_list=f0277df8, 959st page, page va=f03bf000
+page_alloc: page_free_list=f0277df0, 958st page, page va=f03be000
+page_alloc: page_free_list=f0277de8, 957st page, page va=f03bd000
+page_alloc: page_free_list=f0277de0, 956st page, page va=f03bc000
+check pages array
+check phys mem
+check kernel stack
+check PDE permissions
+check_kern_pgdir() succeeded!
+boot_alloc memory at f02d5000, next memory allocate at f02d5000
+check_page_free_list() succeeded!
+page_alloc: page_free_list=f0277dd8, 955st page, page va=f03bb000
+page_alloc: page_free_list=f0277dd0, 954st page, page va=f03ba000
+page_alloc: page_free_list=f0277dc8, 953st page, page va=f03b9000
+page_free:f0277dd8, 955st page, page vd:f03bb000
+page_alloc: page_free_list=f0277dd8, 955st page, page va=f03bb000
+page_free:f0277dd0, 954st page, page vd:f03ba000
+page_free:f0277dc8, 953st page, page vd:f03b9000
+page_free:f0277dd8, 955st page, page vd:f03bb000
+check_page_installed_pgdir() succeeded!
+env_init begins.
+env_init finished. trap_init begins
+trap_init finished.
+SMP: CPU 0 found 2 CPU(s)
+boot_map_region:
+enabled interrupts: 1 2
+SMP: CPU 1 starting
+boot_map_region:
+page_alloc: page_free_list=f0277dd8, 955st page, page va=f03bb000
+[00000000] new env 00001000
+page_alloc: page_free_list=f0277dc8, 953st page, page va=f03b9000
+page_alloc: page_free_list=f0277dd0, 954st page, page va=f03ba000
+page_alloc: page_free_list=f0277dc0, 952st page, page va=f03b8000
+page_alloc: page_free_list=f0277db8, 951st page, page va=f03b7000
+page_alloc: page_free_list=f0277db0, 950st page, page va=f03b6000
+page_alloc: page_free_list=f0277da8, 949st page, page va=f03b5000
+page_alloc: page_free_list=f0277da0, 948st page, page va=f03b4000
+page_alloc: page_free_list=f0277d98, 947st page, page va=f03b3000
+page_alloc: page_free_list=f0277d90, 946st page, page va=f03b2000
+page_alloc: page_free_list=f0277d88, 945st page, page va=f03b1000
+page_alloc: page_free_list=f0277d80, 944st page, page va=f03b0000
+page_alloc: page_free_list=f0277d78, 943st page, page va=f03af000
+page_alloc: page_free_list=f0277d70, 942st page, page va=f03ae000
+[00000000] new env 00001001
+page_alloc: page_free_list=f0277d68, 941st page, page va=f03ad000
+page_alloc: page_free_list=f0277d60, 940st page, page va=f03ac000
+page_alloc: page_free_list=f0277d58, 939st page, page va=f03ab000
+page_alloc: page_free_list=f0277d50, 938st page, page va=f03aa000
+page_alloc: page_free_list=f0277d48, 937st page, page va=f03a9000
+page_alloc: page_free_list=f0277d40, 936st page, page va=f03a8000
+page_alloc: page_free_list=f0277d38, 935st page, page va=f03a7000
+page_alloc: page_free_list=f0277d30, 934st page, page va=f03a6000
+page_alloc: page_free_list=f0277d28, 933st page, page va=f03a5000
+page_alloc: page_free_list=f0277d20, 932st page, page va=f03a4000
+page_alloc: page_free_list=f0277d18, 931st page, page va=f03a3000
+page_alloc: page_free_list=f0277d10, 930st page, page va=f03a2000
+page_alloc: page_free_list=f0277d08, 929st page, page va=f03a1000
+[00000000] new env 00001002
+page_alloc: page_free_list=f0277d00, 928st page, page va=f03a0000
+page_alloc: page_free_list=f0277cf8, 927st page, page va=f039f000
+page_alloc: page_free_list=f0277cf0, 926st page, page va=f039e000
+page_alloc: page_free_list=f0277ce8, 925st page, page va=f039d000
+page_alloc: page_free_list=f0277ce0, 924st page, page va=f039c000
+page_alloc: page_free_list=f0277cd8, 923st page, page va=f039b000
+page_alloc: page_free_list=f0277cd0, 922st page, page va=f039a000
+page_alloc: page_free_list=f0277cc8, 921st page, page va=f0399000
+page_alloc: page_free_list=f0277cc0, 920st page, page va=f0398000
+page_alloc: page_free_list=f0277cb8, 919st page, page va=f0397000
+page_alloc: page_free_list=f0277cb0, 918st page, page va=f0396000
+page_alloc: page_free_list=f0277ca8, 917st page, page va=f0395000
+env_run begins.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_pop_tf begins.
+user_mem_check va: eebfde88, len: 22
+user_mem_check success va: eebfde88, len: 22
+Hello, I am environment 00001000.
+env_run begins.
+get in trap.
+user_mem_check va: eebfde88, len: 22
+user_mem_check success va: eebfde88, len: 22
+Hello, I am environment 00001001.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run env_pop_tf begins.
+get in trap.
+begins.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001000, iteration 0.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 22
+user_mem_check success va: eebfde88, len: 22
+Hello, I am environment 00001002.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+env_pop_tf begins.
+get in trap.
+Back in environment 00001001, iteration 0.
+env_run begins.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001000, iteration 1.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001002, iteration 0.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len:e 2b
+Back in environment 00001001, iteration 1.
+env_run begins.
+nv_pop_tf begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001000, iteration 2.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001001, iteration 2.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trapenv_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88.
+, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001002, iteration 1.
+env_run begins.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001000, iteration 3.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001001, iteration 3.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001002, iteration 2.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001000, iteration 4.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 22
+user_mem_check success va: eebfde88, len: 22
+All done in environment 00001000.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001001, iteration 4.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+[00001000] exiting gracefully
+[00001000] free env 00001000
+env_pop_tf begins.
+get in trap.
+page_free:f0277dd0, 954st page, page vd:f03ba000
+page_free:f0277d98, 947st page, page vd:f03b3000
+page_free:f0277d78, 943st page, page vd:f03af000
+page_free:f0277dd8, 955st page, page vd:f03bb000
+env_run begins.
+user_mem_check va: eebfde88, len: 22
+user_mem_check success va: eebfde88, len: 22
+All done in environment 00001001.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001002, iteration 3.
+env_run begins.
+env_pop_tf begins.
+env_pop_tf begins.
+get in trap.
+get in trap.
+[00001001] exiting gracefully
+[00001001] free env 00001001
+page_free:f0277d60, 940st page, page vd:f03ac000
+page_free:f0277d30, 934st page, page vd:f03a6000
+page_free:f0277d10, 930st page, page vd:f03a2000
+page_free:f0277d70, 942st page, page vd:f03ae000
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001002, iteration 4.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 22
+user_mem_check success va: eebfde88, len: 22
+All done in environment 00001002.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+[00001002] exiting gracefully
+[00001002] free env 00001002
+page_free:f0277cf8, 927st page, page vd:f039f000
+page_free:f0277cc8, 921st page, page vd:f0399000
+page_free:f0277ca8, 917st page, page vd:f0395000
+page_free:f0277d08, 929st page, page vd:f03a1000
+No runnable environments in the system!
+Welcome to the JOS kernel monitor!
+Type 'help' for a list of commands.
+K> QEMU: Terminated
++ cc kern/syscall.c
++ cc kern/syscall.c
++ ld obj/kern/kernel
++ mk obj/kern/kernel.img
+qemu-system-i386 -drive file=obj/kern/kernel.img,index=0,media=disk,format=raw -serial mon:stdio -gdb tcp::25000 -D qemu.log -smp 2 
+VNC server running on `127.0.0.1:5900'
+6828 decimal is 15254 octal!
+Physical memory: 131072K available, base = 640K, extended = 130432K, npages =32768
+end: f0274008
+sizeof(Trapframe)=68.
+boot_alloc a page for kern_pgdir
+bootstack=f0118000, bootstacktop=f0120000, ebp=f011ffd8, &n=f011ffbc
+boot_alloc memory at f0275000, next memory allocate at f0276000
+sizeof(struct PageInfo*)=4, sizeof(struct PageInfo)=8, pages=0, sizeof(struct PageInfo)*npages=256K
+boot_alloc pages for pages
+boot_alloc memory at f0276000, next memory allocate at f02b6000
+pages=f0276000
+boot_alloc a page for envs
+boot_alloc memory at f02b6000, next memory allocate at f02d5000
+sizeof(struct Env*)=4, envs=f02b6000,sizeof(struct Env)=124, NENV=1024, sizeof(struct Env)*NENV=124K
+page_init begins
+boot_alloc memory at f02d5000, next memory allocate at f02d5000
+page_free_list=f02b5ff8, 32767st page, page va=f7fff000
+page_init ends
+boot_alloc memory at f02d5000, next memory allocate at f02d5000
+check_page_free_list() succeeded!
+number of free pages=32201
+page_alloc: page_free_list=f0277ff8, 1023st page, page va=f03ff000
+page_alloc: page_free_list=f0277ff0, 1022st page, page va=f03fe000
+page_alloc: page_free_list=f0277fe8, 1021st page, page va=f03fd000
+page_alloc: page_free_list=0, 33231872st page, page va=a1400000
+page_alloc:out of free memory
+page_free:f0277ff8, 1023st page, page vd:f03ff000
+page_free:f0277ff0, 1022st page, page vd:f03fe000
+page_free:f0277fe8, 1021st page, page vd:f03fd000
+page_alloc: page_free_list=f0277fe8, 1021st page, page va=f03fd000
+page_alloc: page_free_list=f0277ff0, 1022st page, page va=f03fe000
+page_alloc: page_free_list=f0277ff8, 1023st page, page va=f03ff000
+page_alloc: page_free_list=0, 33231872st page, page va=a1400000
+page_alloc:out of free memory
+page_free:f0277fe8, 1021st page, page vd:f03fd000
+page_alloc: page_free_list=f0277fe8, 1021st page, page va=f03fd000
+page_free:f0277fe8, 1021st page, page vd:f03fd000
+page_free:f0277ff0, 1022st page, page vd:f03fe000
+page_free:f0277ff8, 1023st page, page vd:f03ff000
+check_page_alloc() succeeded!
+page_alloc: page_free_list=f0277ff8, 1023st page, page va=f03ff000
+page_alloc: page_free_list=f0277ff0, 1022st page, page va=f03fe000
+page_alloc: page_free_list=f0277fe8, 1021st page, page va=f03fd000
+page_alloc: page_free_list=0, 33231872st page, page va=a1400000
+page_alloc:out of free memory
+page_alloc: page_free_list=0, 33231872st page, page va=a1400000
+page_alloc:out of free memory
+page_free:f0277ff8, 1023st page, page vd:f03ff000
+page_alloc: page_free_list=f0277ff8, 1023st page, page va=f03ff000
+page_alloc: page_free_list=0, 33231872st page, page va=a1400000
+page_alloc:out of free memory
+page_alloc: page_free_list=0, 33231872st page, page va=a1400000
+page_alloc:out of free memory
+page_alloc: page_free_list=0, 33231872st page, page va=a1400000
+page_alloc:out of free memory
+page_free:f0277fe8, 1021st page, page vd:f03fd000
+page_alloc: page_free_list=f0277fe8, 1021st page, page va=f03fd000
+page_free:f0277ff0, 1022st page, page vd:f03fe000
+page_alloc: page_free_list=f0277ff0, 1022st page, page va=f03fe000
+page_alloc: page_free_list=0, 33231872st page, page va=a1400000
+page_alloc:out of free memory
+page_free:f0277ff8, 1023st page, page vd:f03ff000
+page_alloc: page_free_list=f0277ff8, 1023st page, page va=f03ff000
+page_free:f0277ff8, 1023st page, page vd:f03ff000
+page_alloc: page_free_list=f0277ff8, 1023st page, page va=f03ff000
+page_free:f0277ff8, 1023st page, page vd:f03ff000
+page_free:f0277ff0, 1022st page, page vd:f03fe000
+page_free:f0277fe8, 1021st page, page vd:f03fd000
+boot_map_region:
+page_alloc: page_free_list=f0277fe8, 1021st page, page va=f03fd000
+boot_map_region:
+check_page() succeeded!
+map kern_pgdir`s UPAGES as pages(maped size 4MB):
+boot_map_region:
+page_alloc: page_free_list=f0277ff0, 1022st page, page va=f03fe000
+map kern_pgdir`s UENVS as envs(maped size 4MB):
+boot_map_region:
+page_alloc: page_free_list=f0277ff8, 1023st page, page va=f03ff000
+map kern_pgdir`s kernelstack as bootstack=f0118000.
+boot_map_region:
+page_alloc: page_free_list=f0277fe0, 1020st page, page va=f03fc000
+boot_map_region:
+boot_map_region:
+boot_map_region:
+boot_map_region:
+boot_map_region:
+boot_map_region:
+boot_map_region:
+boot_map_region:
+map kern_pgdir`s KERNBASE=f0000000 as 00000000,  size=0fffffffB=271MB.
+boot_map_region:
+page_alloc: page_free_list=f0277fd8, 1019st page, page va=f03fb000
+page_alloc: page_free_list=f0277fd0, 1018st page, page va=f03fa000
+page_alloc: page_free_list=f0277fc8, 1017st page, page va=f03f9000
+page_alloc: page_free_list=f0277fc0, 1016st page, page va=f03f8000
+page_alloc: page_free_list=f0277fb8, 1015st page, page va=f03f7000
+page_alloc: page_free_list=f0277fb0, 1014st page, page va=f03f6000
+page_alloc: page_free_list=f0277fa8, 1013st page, page va=f03f5000
+page_alloc: page_free_list=f0277fa0, 1012st page, page va=f03f4000
+page_alloc: page_free_list=f0277f98, 1011st page, page va=f03f3000
+page_alloc: page_free_list=f0277f90, 1010st page, page va=f03f2000
+page_alloc: page_free_list=f0277f88, 1009st page, page va=f03f1000
+page_alloc: page_free_list=f0277f80, 1008st page, page va=f03f0000
+page_alloc: page_free_list=f0277f78, 1007st page, page va=f03ef000
+page_alloc: page_free_list=f0277f70, 1006st page, page va=f03ee000
+page_alloc: page_free_list=f0277f68, 1005st page, page va=f03ed000
+page_alloc: page_free_list=f0277f60, 1004st page, page va=f03ec000
+page_alloc: page_free_list=f0277f58, 1003st page, page va=f03eb000
+page_alloc: page_free_list=f0277f50, 1002st page, page va=f03ea000
+page_alloc: page_free_list=f0277f48, 1001st page, page va=f03e9000
+page_alloc: page_free_list=f0277f40, 1000st page, page va=f03e8000
+page_alloc: page_free_list=f0277f38, 999st page, page va=f03e7000
+page_alloc: page_free_list=f0277f30, 998st page, page va=f03e6000
+page_alloc: page_free_list=f0277f28, 997st page, page va=f03e5000
+page_alloc: page_free_list=f0277f20, 996st page, page va=f03e4000
+page_alloc: page_free_list=f0277f18, 995st page, page va=f03e3000
+page_alloc: page_free_list=f0277f10, 994st page, page va=f03e2000
+page_alloc: page_free_list=f0277f08, 993st page, page va=f03e1000
+page_alloc: page_free_list=f0277f00, 992st page, page va=f03e0000
+page_alloc: page_free_list=f0277ef8, 991st page, page va=f03df000
+page_alloc: page_free_list=f0277ef0, 990st page, page va=f03de000
+page_alloc: page_free_list=f0277ee8, 989st page, page va=f03dd000
+page_alloc: page_free_list=f0277ee0, 988st page, page va=f03dc000
+page_alloc: page_free_list=f0277ed8, 987st page, page va=f03db000
+page_alloc: page_free_list=f0277ed0, 986st page, page va=f03da000
+page_alloc: page_free_list=f0277ec8, 985st page, page va=f03d9000
+page_alloc: page_free_list=f0277ec0, 984st page, page va=f03d8000
+page_alloc: page_free_list=f0277eb8, 983st page, page va=f03d7000
+page_alloc: page_free_list=f0277eb0, 982st page, page va=f03d6000
+page_alloc: page_free_list=f0277ea8, 981st page, page va=f03d5000
+page_alloc: page_free_list=f0277ea0, 980st page, page va=f03d4000
+page_alloc: page_free_list=f0277e98, 979st page, page va=f03d3000
+page_alloc: page_free_list=f0277e90, 978st page, page va=f03d2000
+page_alloc: page_free_list=f0277e88, 977st page, page va=f03d1000
+page_alloc: page_free_list=f0277e80, 976st page, page va=f03d0000
+page_alloc: page_free_list=f0277e78, 975st page, page va=f03cf000
+page_alloc: page_free_list=f0277e70, 974st page, page va=f03ce000
+page_alloc: page_free_list=f0277e68, 973st page, page va=f03cd000
+page_alloc: page_free_list=f0277e60, 972st page, page va=f03cc000
+page_alloc: page_free_list=f0277e58, 971st page, page va=f03cb000
+page_alloc: page_free_list=f0277e50, 970st page, page va=f03ca000
+page_alloc: page_free_list=f0277e48, 969st page, page va=f03c9000
+page_alloc: page_free_list=f0277e40, 968st page, page va=f03c8000
+page_alloc: page_free_list=f0277e38, 967st page, page va=f03c7000
+page_alloc: page_free_list=f0277e30, 966st page, page va=f03c6000
+page_alloc: page_free_list=f0277e28, 965st page, page va=f03c5000
+page_alloc: page_free_list=f0277e20, 964st page, page va=f03c4000
+page_alloc: page_free_list=f0277e18, 963st page, page va=f03c3000
+page_alloc: page_free_list=f0277e10, 962st page, page va=f03c2000
+page_alloc: page_free_list=f0277e08, 961st page, page va=f03c1000
+page_alloc: page_free_list=f0277e00, 960st page, page va=f03c0000
+page_alloc: page_free_list=f0277df8, 959st page, page va=f03bf000
+page_alloc: page_free_list=f0277df0, 958st page, page va=f03be000
+page_alloc: page_free_list=f0277de8, 957st page, page va=f03bd000
+page_alloc: page_free_list=f0277de0, 956st page, page va=f03bc000
+check pages array
+check phys mem
+check kernel stack
+check PDE permissions
+check_kern_pgdir() succeeded!
+boot_alloc memory at f02d5000, next memory allocate at f02d5000
+check_page_free_list() succeeded!
+page_alloc: page_free_list=f0277dd8, 955st page, page va=f03bb000
+page_alloc: page_free_list=f0277dd0, 954st page, page va=f03ba000
+page_alloc: page_free_list=f0277dc8, 953st page, page va=f03b9000
+page_free:f0277dd8, 955st page, page vd:f03bb000
+page_alloc: page_free_list=f0277dd8, 955st page, page va=f03bb000
+page_free:f0277dd0, 954st page, page vd:f03ba000
+page_free:f0277dc8, 953st page, page vd:f03b9000
+page_free:f0277dd8, 955st page, page vd:f03bb000
+check_page_installed_pgdir() succeeded!
+env_init begins.
+env_init finished. trap_init begins
+trap_init finished.
+SMP: CPU 0 found 2 CPU(s)
+boot_map_region:
+enabled interrupts: 1 2
+SMP: CPU 1 starting
+boot_map_region:
+page_alloc: page_free_list=f0277dd8, 955st page, page va=f03bb000
+[00000000] new env 00001000
+page_alloc: page_free_list=f0277dc8, 953st page, page va=f03b9000
+page_alloc: page_free_list=f0277dd0, 954st page, page va=f03ba000
+page_alloc: page_free_list=f0277dc0, 952st page, page va=f03b8000
+page_alloc: page_free_list=f0277db8, 951st page, page va=f03b7000
+page_alloc: page_free_list=f0277db0, 950st page, page va=f03b6000
+page_alloc: page_free_list=f0277da8, 949st page, page va=f03b5000
+page_alloc: page_free_list=f0277da0, 948st page, page va=f03b4000
+page_alloc: page_free_list=f0277d98, 947st page, page va=f03b3000
+page_alloc: page_free_list=f0277d90, 946st page, page va=f03b2000
+page_alloc: page_free_list=f0277d88, 945st page, page va=f03b1000
+page_alloc: page_free_list=f0277d80, 944st page, page va=f03b0000
+page_alloc: page_free_list=f0277d78, 943st page, page va=f03af000
+page_alloc: page_free_list=f0277d70, 942st page, page va=f03ae000
+[00000000] new env 00001001
+page_alloc: page_free_list=f0277d68, 941st page, page va=f03ad000
+page_alloc: page_free_list=f0277d60, 940st page, page va=f03ac000
+page_alloc: page_free_list=f0277d58, 939st page, page va=f03ab000
+page_alloc: page_free_list=f0277d50, 938st page, page va=f03aa000
+page_alloc: page_free_list=f0277d48, 937st page, page va=f03a9000
+page_alloc: page_free_list=f0277d40, 936st page, page va=f03a8000
+page_alloc: page_free_list=f0277d38, 935st page, page va=f03a7000
+page_alloc: page_free_list=f0277d30, 934st page, page va=f03a6000
+page_alloc: page_free_list=f0277d28, 933st page, page va=f03a5000
+page_alloc: page_free_list=f0277d20, 932st page, page va=f03a4000
+page_alloc: page_free_list=f0277d18, 931st page, page va=f03a3000
+page_alloc: page_free_list=f0277d10, 930st page, page va=f03a2000
+page_alloc: page_free_list=f0277d08, 929st page, page va=f03a1000
+[00000000] new env 00001002
+page_alloc: page_free_list=f0277d00, 928st page, page va=f03a0000
+page_alloc: page_free_list=f0277cf8, 927st page, page va=f039f000
+page_alloc: page_free_list=f0277cf0, 926st page, page va=f039e000
+page_alloc: page_free_list=f0277ce8, 925st page, page va=f039d000
+page_alloc: page_free_list=f0277ce0, 924st page, page va=f039c000
+page_alloc: page_free_list=f0277cd8, 923st page, page va=f039b000
+page_alloc: page_free_list=f0277cd0, 922st page, page va=f039a000
+page_alloc: page_free_list=f0277cc8, 921st page, page va=f0399000
+page_alloc: page_free_list=f0277cc0, 920st page, page va=f0398000
+page_alloc: page_free_list=f0277cb8, 919st page, page va=f0397000
+page_alloc: page_free_list=f0277cb0, 918st page, page va=f0396000
+page_alloc: page_free_list=f0277ca8, 917st page, page va=f0395000
+env_run begins.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 22
+user_mem_cget in trap.
+heck success va: eebfde88, len: 22
+Hello, I am environment 00001001.
+env_run begins.
+user_mem_check va: eebfde88, len: 22
+user_mem_check success va: eebfde88, len: 22
+Hello, I am environment 00001000.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 22
+user_mem_check success va: eebfde88, len: 22
+get in trap.
+Hello, I am environment 00001002.
+env_run begins.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001001, iteration 0.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+enuser_mem_check va: eebfde88, lev_pop_tf begins.
+get in trap.
+n: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001000, iteration 0.
+env_run begins.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001002, iteration 0.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001001, iteration 1.
+enenv_pop_tf begins.
+get in trap.
+v_run begins.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check successenv_pop_tf begins.
+get in trap.
+ va: eebfde88, len: 2b
+Back in environment 00001000, iteration 1.
+env_run begins.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001002, iteration 1.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+env_pop_tf begins.
+get in trap.
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001001, iteration 2.
+env_run begins.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001000, iteration 2.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001002, iteration 2.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001001, iteration 3.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001002, iteration 3.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+env_pop_tf begins.
+get in trap.
+Back in environment 00001000, iteration 3.
+env_run begins.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001001, iteration 4.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 22
+user_mem_check success va: eebfde88, len: 22
+All done in environment 00001001.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in envenv_pop_tf begins.
+get in trap.
+ironment 00001002, iteration 4.
+env_run begins.
+[0000e1001] exiting gracefully
+[00001001] free env 00001001
+page_free:f0277d60, 940st page, page vd:f03ac000
+page_free:f0277d30, 934st page, page vd:f03a6000
+page_free:f0277d10, 930st page, page vd:f03a2000
+page_free:f0277d70, 942st page, page vd:f03ae000
+env_run begins.
+nv_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 22
+env_pop_tf begins.
+get in trap.
+user_mem_check success va: eebfde88, len: 22
+All done in environment 00001002.
+env_run begins.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001000, iteration 4.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+[00001002] exiting gracefully
+[00001002] free env 00001002
+page_free:f0277cf8, 927st page, page vd:f039f000
+page_free:f0277cc8, 921st page, page vd:f0399000
+page_free:f0277ca8, 917st page, page vd:f0395000
+page_free:f0277d08, 929st page, page vd:f03a1000
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 22
+user_mem_check success va: eebfde88, len: 22
+All done in environment 00001000.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+[00001000] exiting gracefully
+[00001000] free env 00001000
+page_free:f0277dd0, 954st page, page vd:f03ba000
+page_free:f0277d98, 947st page, page vd:f03b3000
+page_free:f0277d78, 943st page, page vd:f03af000
+page_free:f0277dd8, 955st page, page vd:f03bb000
+No runnable environments in the system!
+Welcome to the JOS kernel monitor!
+Type 'help' for a list of commands.
+K> QEMU: Terminated
++ cc kern/init.c
++ ld obj/kern/kernel
++ mk obj/kern/kernel.img
+qemu-system-i386 -drive file=obj/kern/kernel.img,index=0,media=disk,format=raw -serial mon:stdio -gdb tcp::25000 -D qemu.log -smp 2 
+VNC server running on `127.0.0.1:5900'
+6828 decimal is 15254 octal!
+Physical memory: 131072K available, base = 640K, extended = 130432K, npages =32768
+end: f0274008
+sizeof(Trapframe)=68.
+boot_alloc a page for kern_pgdir
+bootstack=f0118000, bootstacktop=f0120000, ebp=f011ffd8, &n=f011ffbc
+boot_alloc memory at f0275000, next memory allocate at f0276000
+sizeof(struct PageInfo*)=4, sizeof(struct PageInfo)=8, pages=0, sizeof(struct PageInfo)*npages=256K
+boot_alloc pages for pages
+boot_alloc memory at f0276000, next memory allocate at f02b6000
+pages=f0276000
+boot_alloc a page for envs
+boot_alloc memory at f02b6000, next memory allocate at f02d5000
+sizeof(struct Env*)=4, envs=f02b6000,sizeof(struct Env)=124, NENV=1024, sizeof(struct Env)*NENV=124K
+page_init begins
+boot_alloc memory at f02d5000, next memory allocate at f02d5000
+page_free_list=f02b5ff8, 32767st page, page va=f7fff000
+page_init ends
+boot_alloc memory at f02d5000, next memory allocate at f02d5000
+check_page_free_list() succeeded!
+number of free pages=32201
+page_alloc: page_free_list=f0277ff8, 1023st page, page va=f03ff000
+page_alloc: page_free_list=f0277ff0, 1022st page, page va=f03fe000
+page_alloc: page_free_list=f0277fe8, 1021st page, page va=f03fd000
+page_alloc: page_free_list=0, 33231872st page, page va=a1400000
+page_alloc:out of free memory
+page_free:f0277ff8, 1023st page, page vd:f03ff000
+page_free:f0277ff0, 1022st page, page vd:f03fe000
+page_free:f0277fe8, 1021st page, page vd:f03fd000
+page_alloc: page_free_list=f0277fe8, 1021st page, page va=f03fd000
+page_alloc: page_free_list=f0277ff0, 1022st page, page va=f03fe000
+page_alloc: page_free_list=f0277ff8, 1023st page, page va=f03ff000
+page_alloc: page_free_list=0, 33231872st page, page va=a1400000
+page_alloc:out of free memory
+page_free:f0277fe8, 1021st page, page vd:f03fd000
+page_alloc: page_free_list=f0277fe8, 1021st page, page va=f03fd000
+page_free:f0277fe8, 1021st page, page vd:f03fd000
+page_free:f0277ff0, 1022st page, page vd:f03fe000
+page_free:f0277ff8, 1023st page, page vd:f03ff000
+check_page_alloc() succeeded!
+page_alloc: page_free_list=f0277ff8, 1023st page, page va=f03ff000
+page_alloc: page_free_list=f0277ff0, 1022st page, page va=f03fe000
+page_alloc: page_free_list=f0277fe8, 1021st page, page va=f03fd000
+page_alloc: page_free_list=0, 33231872st page, page va=a1400000
+page_alloc:out of free memory
+page_alloc: page_free_list=0, 33231872st page, page va=a1400000
+page_alloc:out of free memory
+page_free:f0277ff8, 1023st page, page vd:f03ff000
+page_alloc: page_free_list=f0277ff8, 1023st page, page va=f03ff000
+page_alloc: page_free_list=0, 33231872st page, page va=a1400000
+page_alloc:out of free memory
+page_alloc: page_free_list=0, 33231872st page, page va=a1400000
+page_alloc:out of free memory
+page_alloc: page_free_list=0, 33231872st page, page va=a1400000
+page_alloc:out of free memory
+page_free:f0277fe8, 1021st page, page vd:f03fd000
+page_alloc: page_free_list=f0277fe8, 1021st page, page va=f03fd000
+page_free:f0277ff0, 1022st page, page vd:f03fe000
+page_alloc: page_free_list=f0277ff0, 1022st page, page va=f03fe000
+page_alloc: page_free_list=0, 33231872st page, page va=a1400000
+page_alloc:out of free memory
+page_free:f0277ff8, 1023st page, page vd:f03ff000
+page_alloc: page_free_list=f0277ff8, 1023st page, page va=f03ff000
+page_free:f0277ff8, 1023st page, page vd:f03ff000
+page_alloc: page_free_list=f0277ff8, 1023st page, page va=f03ff000
+page_free:f0277ff8, 1023st page, page vd:f03ff000
+page_free:f0277ff0, 1022st page, page vd:f03fe000
+page_free:f0277fe8, 1021st page, page vd:f03fd000
+boot_map_region:
+page_alloc: page_free_list=f0277fe8, 1021st page, page va=f03fd000
+boot_map_region:
+check_page() succeeded!
+map kern_pgdir`s UPAGES as pages(maped size 4MB):
+boot_map_region:
+page_alloc: page_free_list=f0277ff0, 1022st page, page va=f03fe000
+map kern_pgdir`s UENVS as envs(maped size 4MB):
+boot_map_region:
+page_alloc: page_free_list=f0277ff8, 1023st page, page va=f03ff000
+map kern_pgdir`s kernelstack as bootstack=f0118000.
+boot_map_region:
+page_alloc: page_free_list=f0277fe0, 1020st page, page va=f03fc000
+boot_map_region:
+boot_map_region:
+boot_map_region:
+boot_map_region:
+boot_map_region:
+boot_map_region:
+boot_map_region:
+boot_map_region:
+map kern_pgdir`s KERNBASE=f0000000 as 00000000,  size=0fffffffB=271MB.
+boot_map_region:
+page_alloc: page_free_list=f0277fd8, 1019st page, page va=f03fb000
+page_alloc: page_free_list=f0277fd0, 1018st page, page va=f03fa000
+page_alloc: page_free_list=f0277fc8, 1017st page, page va=f03f9000
+page_alloc: page_free_list=f0277fc0, 1016st page, page va=f03f8000
+page_alloc: page_free_list=f0277fb8, 1015st page, page va=f03f7000
+page_alloc: page_free_list=f0277fb0, 1014st page, page va=f03f6000
+page_alloc: page_free_list=f0277fa8, 1013st page, page va=f03f5000
+page_alloc: page_free_list=f0277fa0, 1012st page, page va=f03f4000
+page_alloc: page_free_list=f0277f98, 1011st page, page va=f03f3000
+page_alloc: page_free_list=f0277f90, 1010st page, page va=f03f2000
+page_alloc: page_free_list=f0277f88, 1009st page, page va=f03f1000
+page_alloc: page_free_list=f0277f80, 1008st page, page va=f03f0000
+page_alloc: page_free_list=f0277f78, 1007st page, page va=f03ef000
+page_alloc: page_free_list=f0277f70, 1006st page, page va=f03ee000
+page_alloc: page_free_list=f0277f68, 1005st page, page va=f03ed000
+page_alloc: page_free_list=f0277f60, 1004st page, page va=f03ec000
+page_alloc: page_free_list=f0277f58, 1003st page, page va=f03eb000
+page_alloc: page_free_list=f0277f50, 1002st page, page va=f03ea000
+page_alloc: page_free_list=f0277f48, 1001st page, page va=f03e9000
+page_alloc: page_free_list=f0277f40, 1000st page, page va=f03e8000
+page_alloc: page_free_list=f0277f38, 999st page, page va=f03e7000
+page_alloc: page_free_list=f0277f30, 998st page, page va=f03e6000
+page_alloc: page_free_list=f0277f28, 997st page, page va=f03e5000
+page_alloc: page_free_list=f0277f20, 996st page, page va=f03e4000
+page_alloc: page_free_list=f0277f18, 995st page, page va=f03e3000
+page_alloc: page_free_list=f0277f10, 994st page, page va=f03e2000
+page_alloc: page_free_list=f0277f08, 993st page, page va=f03e1000
+page_alloc: page_free_list=f0277f00, 992st page, page va=f03e0000
+page_alloc: page_free_list=f0277ef8, 991st page, page va=f03df000
+page_alloc: page_free_list=f0277ef0, 990st page, page va=f03de000
+page_alloc: page_free_list=f0277ee8, 989st page, page va=f03dd000
+page_alloc: page_free_list=f0277ee0, 988st page, page va=f03dc000
+page_alloc: page_free_list=f0277ed8, 987st page, page va=f03db000
+page_alloc: page_free_list=f0277ed0, 986st page, page va=f03da000
+page_alloc: page_free_list=f0277ec8, 985st page, page va=f03d9000
+page_alloc: page_free_list=f0277ec0, 984st page, page va=f03d8000
+page_alloc: page_free_list=f0277eb8, 983st page, page va=f03d7000
+page_alloc: page_free_list=f0277eb0, 982st page, page va=f03d6000
+page_alloc: page_free_list=f0277ea8, 981st page, page va=f03d5000
+page_alloc: page_free_list=f0277ea0, 980st page, page va=f03d4000
+page_alloc: page_free_list=f0277e98, 979st page, page va=f03d3000
+page_alloc: page_free_list=f0277e90, 978st page, page va=f03d2000
+page_alloc: page_free_list=f0277e88, 977st page, page va=f03d1000
+page_alloc: page_free_list=f0277e80, 976st page, page va=f03d0000
+page_alloc: page_free_list=f0277e78, 975st page, page va=f03cf000
+page_alloc: page_free_list=f0277e70, 974st page, page va=f03ce000
+page_alloc: page_free_list=f0277e68, 973st page, page va=f03cd000
+page_alloc: page_free_list=f0277e60, 972st page, page va=f03cc000
+page_alloc: page_free_list=f0277e58, 971st page, page va=f03cb000
+page_alloc: page_free_list=f0277e50, 970st page, page va=f03ca000
+page_alloc: page_free_list=f0277e48, 969st page, page va=f03c9000
+page_alloc: page_free_list=f0277e40, 968st page, page va=f03c8000
+page_alloc: page_free_list=f0277e38, 967st page, page va=f03c7000
+page_alloc: page_free_list=f0277e30, 966st page, page va=f03c6000
+page_alloc: page_free_list=f0277e28, 965st page, page va=f03c5000
+page_alloc: page_free_list=f0277e20, 964st page, page va=f03c4000
+page_alloc: page_free_list=f0277e18, 963st page, page va=f03c3000
+page_alloc: page_free_list=f0277e10, 962st page, page va=f03c2000
+page_alloc: page_free_list=f0277e08, 961st page, page va=f03c1000
+page_alloc: page_free_list=f0277e00, 960st page, page va=f03c0000
+page_alloc: page_free_list=f0277df8, 959st page, page va=f03bf000
+page_alloc: page_free_list=f0277df0, 958st page, page va=f03be000
+page_alloc: page_free_list=f0277de8, 957st page, page va=f03bd000
+page_alloc: page_free_list=f0277de0, 956st page, page va=f03bc000
+check pages array
+check phys mem
+check kernel stack
+check PDE permissions
+check_kern_pgdir() succeeded!
+boot_alloc memory at f02d5000, next memory allocate at f02d5000
+check_page_free_list() succeeded!
+page_alloc: page_free_list=f0277dd8, 955st page, page va=f03bb000
+page_alloc: page_free_list=f0277dd0, 954st page, page va=f03ba000
+page_alloc: page_free_list=f0277dc8, 953st page, page va=f03b9000
+page_free:f0277dd8, 955st page, page vd:f03bb000
+page_alloc: page_free_list=f0277dd8, 955st page, page va=f03bb000
+page_free:f0277dd0, 954st page, page vd:f03ba000
+page_free:f0277dc8, 953st page, page vd:f03b9000
+page_free:f0277dd8, 955st page, page vd:f03bb000
+check_page_installed_pgdir() succeeded!
+env_init begins.
+env_init finished. trap_init begins
+trap_init finished.
+SMP: CPU 0 found 2 CPU(s)
+boot_map_region:
+enabled interrupts: 1 2
+SMP: CPU 1 starting
+boot_map_region:
+page_alloc: page_free_list=f0277dd8, 955st page, page va=f03bb000
+[00000000] new env 00001000
+page_alloc: page_free_list=f0277dc8, 953st page, page va=f03b9000
+page_alloc: page_free_list=f0277dd0, 954st page, page va=f03ba000
+page_alloc: page_free_list=f0277dc0, 952st page, page va=f03b8000
+page_alloc: page_free_list=f0277db8, 951st page, page va=f03b7000
+page_alloc: page_free_list=f0277db0, 950st page, page va=f03b6000
+page_alloc: page_free_list=f0277da8, 949st page, page va=f03b5000
+page_alloc: page_free_list=f0277da0, 948st page, page va=f03b4000
+page_alloc: page_free_list=f0277d98, 947st page, page va=f03b3000
+page_alloc: page_free_list=f0277d90, 946st page, page va=f03b2000
+page_alloc: page_free_list=f0277d88, 945st page, page va=f03b1000
+page_alloc: page_free_list=f0277d80, 944st page, page va=f03b0000
+page_alloc: page_free_list=f0277d78, 943st page, page va=f03af000
+page_alloc: page_free_list=f0277d70, 942st page, page va=f03ae000
+[00000000] new env 00001001
+page_alloc: page_free_list=f0277d68, 941st page, page va=f03ad000
+page_alloc: page_free_list=f0277d60, 940st page, page va=f03ac000
+page_alloc: page_free_list=f0277d58, 939st page, page va=f03ab000
+page_alloc: page_free_list=f0277d50, 938st page, page va=f03aa000
+page_alloc: page_free_list=f0277d48, 937st page, page va=f03a9000
+page_alloc: page_free_list=f0277d40, 936st page, page va=f03a8000
+page_alloc: page_free_list=f0277d38, 935st page, page va=f03a7000
+page_alloc: page_free_list=f0277d30, 934st page, page va=f03a6000
+page_alloc: page_free_list=f0277d28, 933st page, page va=f03a5000
+page_alloc: page_free_list=f0277d20, 932st page, page va=f03a4000
+page_alloc: page_free_list=f0277d18, 931st page, page va=f03a3000
+page_alloc: page_free_list=f0277d10, 930st page, page va=f03a2000
+page_alloc: page_free_list=f0277d08, 929st page, page va=f03a1000
+[00000000] new env 00001002
+page_alloc: page_free_list=f0277d00, 928st page, page va=f03a0000
+page_alloc: page_free_list=f0277cf8, 927st page, page va=f039f000
+page_alloc: page_free_list=f0277cf0, 926st page, page va=f039e000
+page_alloc: page_free_list=f0277ce8, 925st page, page va=f039d000
+page_alloc: page_free_list=f0277ce0, 924st page, page va=f039c000
+page_alloc: page_free_list=f0277cd8, 923st page, page va=f039b000
+page_alloc: page_free_list=f0277cd0, 922st page, page va=f039a000
+page_alloc: page_free_list=f0277cc8, 921st page, page va=f0399000
+page_alloc: page_free_list=f0277cc0, 920st page, page va=f0398000
+page_alloc: page_free_list=f0277cb8, 919st page, page va=f0397000
+page_alloc: page_free_list=f0277cb0, 918st page, page va=f0396000
+page_alloc: page_free_list=f0277ca8, 917st page, page va=f0395000
+page_alloc: page_free_list=f0277ca0, 916st page, page va=f0394000
+[00000000] new env 00001003
+page_alloc: page_free_list=f0277c98, 915st page, page va=f0393000
+page_alloc: page_free_list=f0277c90, 914st page, page va=f0392000
+page_alloc: page_free_list=f0277c88, 913st page, page va=f0391000
+page_alloc: page_free_list=f0277c80, 912st page, page va=f0390000
+page_alloc: page_free_list=f0277c78, 911st page, page va=f038f000
+page_alloc: page_free_list=f0277c70, 910st page, page va=f038e000
+page_alloc: page_free_list=f0277c68, 909st page, page va=f038d000
+page_alloc: page_free_list=f0277c60, 908st page, page va=f038c000
+page_alloc: page_free_list=f0277c58, 907st page, page va=f038b000
+page_alloc: page_free_list=f0277c50, 906st page, page va=f038a000
+page_alloc: page_free_list=f0277c48, 905st page, page va=f0389000
+page_alloc: page_free_list=f0277c40, 904st page, page va=f0388000
+env_run begins.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 22
+user_mem_check success va: eebfde88, len: 22
+Hello, I am environment 00001001.
+env_run begins.
+get in trap.
+user_mem_check va: eebfde88, len: 22
+user_env_pop_tf begins.
+get in trap.
+mem_check success va: eebfde88, len: 22
+Hello, I am environment 00001000.
+env_run begins.
+env_run begins.
+env_poenv_pop_tf begins.
+get in trap.
+env_run begins.
+p_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 22
+user_mem_check success va: eebfde88, len: 22
+Hello, I am environment 00001002.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001001, iteration 0.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001002, iteration 0.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+page_alloc: page_free_list=f0277c38, 903st page, page va=f0387000
+env_pop_tf begins.
+get in trap.
+[00001003] new env 00001004
+env_run begins.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+page_alloc: page_free_list=f0277c30, 902st page, page va=f0386000
+page_alloc: page_free_list=f0277c28, 901st page, page va=f0385000
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001001, iteration 1.
+env_run begins.
+env_pop_tf beginsenv_pop_tf begins.
+get in trap.
+env_run begins.
+.
+get in trap.
+page_alloc: page_free_list=f0277c20env_pop_tf begins.
+get in trap.
+, 900st page, page va=f0384000
+env_run begins.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001002, iteration 1.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+page_alloc: page_free_list=f0277c18env_pop_tf begins.
+get in trap.
+, 899st page, page va=f0383000
+env_run begins.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001001, iteration 2.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001002, iteration 2.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+page_alloc: page_free_list=f0277c10, 898st page, page va=f0382000
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001001, iteration 3.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+page_alloc: page_free_list=f0277c08, 897st page, page va=f0381000
+page_alloc: page_free_list=f0277c00, 896senv_pop_tf begins.
+get in trap.
+t page, page va=f0380000
+env_run begins.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001002, iteration 3.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success vaenv_pop_tf begins.
+get in trap.
+: eebfde88, len: 2b
+Back in environment 00001001, iteration 4.
+env_run begins.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 22
+user_mem_check success va: eebfde88, len: 22
+All done in environment 00001001.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+0: I am the parent!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+[00001001] exiting gracefully
+[00001001]env_pop_tf begins.
+get in trap.
+ free env 00001001
+page_free:f0277d60, 940st page, page vd:f03ac000
+page_free:f0277d30, 934st page, page vd:f03a6000
+page_free:f0277d10, 930st page, page vd:f03a2000
+page_free:f0277d70, 942st page, page vd:f03ae000
+env_run begins.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001000, iteration 0.
+env_run begins.
+env_pop_tf begins.
+get in trenv_pop_tf begins.
+get in trap.
+env_run begins.
+ap.
+user_mem_check va: eebenv_pop_tf begins.
+get in trap.
+fde78, len: 13
+user_mem_check success va: eebfde78, len: 13
+0: I am the child!
+env_run begins.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+1: I am the parent!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_cheenv_pop_tf begins.
+get in trap.
+ck va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001002, iteration 4.
+env_run begins.
+user_mem_check va: eebfde78, len: 13
+user_mem_check success va: eebfde78, len: 13
+1: I am the child!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 22
+user_mem_check success va: eebfde88, len: 22
+eAll done in environment 00001002.
+env_run begins.
+nv_pop_tf begins.
+get in trap.
+env_pop_tf begins.
+get in trap.
+[00001002] exiting gracefully
+[00001002] free env 00001002
+page_free:f0277cf8, 927st page, page vd:f039f000
+page_free:f0277cc8, 921st page, page vd:f0399000
+page_free:f0277ca8, 917st page, page vd:f0395000
+page_free:f0277d08, 929st page, page vd:f03a1000
+env_run begins.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001000, iteration 1.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+2: I am the parent!
+env_run begins.env_pop_tf begins.
+get in trap.
+
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 1env_pop_tf begins.
+get in trap.
+3
+user_mem_check success va: eebfde78, len: 13
+2: I am the child!
+env_run begins.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001000, iteration 2.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 13
+user_mem_check success va: eebfde78, len: 13
+3: I am the child!
+env_run begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+3: I am the parent!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001000, iteratienv_pop_tf begins.
+get in trap.
+on 3.
+env_run begins.
+user_mem_check va: eebfde78, len: 13
+user_mem_check success va: eebfde78, len: 13
+4: env_pop_tf begins.
+get in trap.
+I am the child!
+env_run begins.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+4: I am the parent!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+env_pop_tf begins.
+get in trap.
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001000, iteration 4.
+env_run begins.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 13
+user_mem_check success va: eebfde78, len: 13
+5: I am the child!
+env_run begins.
+user_mem_check va: eebfde88, len: 22
+user_mem_check success va: eebfde88, len: 22
+All done in environment 00001000.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+tuser_mem_check success va: eebfde78, len: 14
+rap.
+5: I am the parent!
+env_run begins.
+[00001000] exiting gracefully
+[00001000] free env 00001000
+page_free:f0277dd0, 954st page, page vd:f03ba000
+page_free:f0277d98, 947st page, page vd:f03b3000
+page_free:f0277d78, 943st page, page vd:f03af000
+page_free:f0277dd8, 955st page, page vd:f03bb000
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 13
+user_mem_check success va: eebfde78, len: 13
+6: I am the child!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+6: I am the parent!
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 13
+user_mem_check success va: eebfde78, len: 13
+7: I am the child!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+7: I am the parent!
+env_run begienv_pop_tf begins.
+get in trap.
+ns.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run benv_pop_tf begins.
+get in trap.
+egins.
+user_mem_check va: eebfde78, len: 13
+user_mem_check success va: eebfde78, len: 13
+8: I am the child!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+8: I am the parent!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 13
+user_mem_check success va: eebfdenv_pop_tf begins.
+get in trap.
+e78, len: 13
+9: I am the child!
+env_run begins.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78env_pop_tf begins.
+get in trap.
+, len: 14
+9: I am the parent!
+env_run begins.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+10: I am the child!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+[00001003] exiting gracefully
+env_pop_tf begins.
+get in trap.
+[00001003] free env 00001003
+page_free:f0277c90, 914st page, page vd:f0392000
+page_free:f0277c20, 900st page, page vd:f0384000
+page_free:f0277c60, 908st page, page vd:f038c000
+page_free:f0277c40, 904st page, page vd:f0388000
+page_free:f0277ca0, 916st page, page vd:f0394000
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+11: I am the child!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+12: I am the child!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+13: I am the child!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+14: I am the child!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+15: I am the child!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+16: I am the child!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+17: I am the child!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+18: I am the child!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+19: I am the child!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+[00001004] exiting gracefully
+[00001004] free env 00001004
+page_free:f0277c30, 902st page, page vd:f0386000
+page_free:f0277c18, 899st page, page vd:f0383000
+page_free:f0277c10, 898st page, page vd:f0382000
+page_free:f0277c28, 901st page, page vd:f0385000
+page_free:f0277c08, 897st page, page vd:f0381000
+page_free:f0277c00, 896st page, page vd:f0380000
+page_free:f0277c38, 903st page, page vd:f0387000
+No runnable environments in the system!
+Welcome to the JOS kernel monitor!
+Type 'help' for a list of commands.
+K> [AQEMU: Terminated
++ cc kern/pmap.c
++ ld obj/kern/kernel
++ mk obj/kern/kernel.img
+qemu-system-i386 -drive file=obj/kern/kernel.img,index=0,media=disk,format=raw -serial mon:stdio -gdb tcp::25000 -D qemu.log -smp 2 
+VNC server running on `127.0.0.1:5900'
+6828 decimal is 15254 octal!
+Physical memory: 131072K available, base = 640K, extended = 130432K, npages =32768
+end: f0274008
+sizeof(Trapframe)=68.
+boot_alloc a page for kern_pgdir
+bootstack=f0118000, bootstacktop=f0120000, ebp=f011ffd8, &n=f011ffbc
+boot_alloc memory at f0275000, next memory allocate at f0276000
+sizeof(struct PageInfo*)=4, sizeof(struct PageInfo)=8, pages=0, sizeof(struct PageInfo)*npages=256K
+boot_alloc pages for pages
+boot_alloc memory at f0276000, next memory allocate at f02b6000
+pages=f0276000
+boot_alloc a page for envs
+boot_alloc memory at f02b6000, next memory allocate at f02d5000
+sizeof(struct Env*)=4, envs=f02b6000,sizeof(struct Env)=124, NENV=1024, sizeof(struct Env)*NENV=124K
+page_init begins
+boot_alloc memory at f02d5000, next memory allocate at f02d5000
+page_free_list=f02b5ff8, 32767st page, page va=f7fff000
+page_init ends
+boot_alloc memory at f02d5000, next memory allocate at f02d5000
+check_page_free_list() succeeded!
+number of free pages=32201
+page_alloc: page_free_list=f0277ff8, 1023st page, page va=f03ff000
+page_alloc: page_free_list=f0277ff0, 1022st page, page va=f03fe000
+page_alloc: page_free_list=f0277fe8, 1021st page, page va=f03fd000
+page_alloc: page_free_list=0, 33231872st page, page va=a1400000
+page_alloc:out of free memory
+page_alloc: page_free_list=f0277fe8, 1021st page, page va=f03fd000
+page_alloc: page_free_list=f0277ff0, 1022st page, page va=f03fe000
+page_alloc: page_free_list=f0277ff8, 1023st page, page va=f03ff000
+page_alloc: page_free_list=0, 33231872st page, page va=a1400000
+page_alloc:out of free memory
+page_alloc: page_free_list=f0277fe8, 1021st page, page va=f03fd000
+check_page_alloc() succeeded!
+page_alloc: page_free_list=f0277ff8, 1023st page, page va=f03ff000
+page_alloc: page_free_list=f0277ff0, 1022st page, page va=f03fe000
+page_alloc: page_free_list=f0277fe8, 1021st page, page va=f03fd000
+page_alloc: page_free_list=0, 33231872st page, page va=a1400000
+page_alloc:out of free memory
+page_alloc: page_free_list=0, 33231872st page, page va=a1400000
+page_alloc:out of free memory
+page_alloc: page_free_list=f0277ff8, 1023st page, page va=f03ff000
+page_alloc: page_free_list=0, 33231872st page, page va=a1400000
+page_alloc:out of free memory
+page_alloc: page_free_list=0, 33231872st page, page va=a1400000
+page_alloc:out of free memory
+page_alloc: page_free_list=0, 33231872st page, page va=a1400000
+page_alloc:out of free memory
+page_alloc: page_free_list=f0277fe8, 1021st page, page va=f03fd000
+page_alloc: page_free_list=f0277ff0, 1022st page, page va=f03fe000
+page_alloc: page_free_list=0, 33231872st page, page va=a1400000
+page_alloc:out of free memory
+page_alloc: page_free_list=f0277ff8, 1023st page, page va=f03ff000
+page_alloc: page_free_list=f0277ff8, 1023st page, page va=f03ff000
+boot_map_region:
+page_alloc: page_free_list=f0277fe8, 1021st page, page va=f03fd000
+boot_map_region:
+check_page() succeeded!
+map kern_pgdir`s UPAGES as pages(maped size 4MB):
+boot_map_region:
+page_alloc: page_free_list=f0277ff0, 1022st page, page va=f03fe000
+map kern_pgdir`s UENVS as envs(maped size 4MB):
+boot_map_region:
+page_alloc: page_free_list=f0277ff8, 1023st page, page va=f03ff000
+map kern_pgdir`s kernelstack as bootstack=f0118000.
+boot_map_region:
+page_alloc: page_free_list=f0277fe0, 1020st page, page va=f03fc000
+boot_map_region:
+boot_map_region:
+boot_map_region:
+boot_map_region:
+boot_map_region:
+boot_map_region:
+boot_map_region:
+boot_map_region:
+map kern_pgdir`s KERNBASE=f0000000 as 00000000,  size=0fffffffB=271MB.
+boot_map_region:
+page_alloc: page_free_list=f0277fd8, 1019st page, page va=f03fb000
+page_alloc: page_free_list=f0277fd0, 1018st page, page va=f03fa000
+page_alloc: page_free_list=f0277fc8, 1017st page, page va=f03f9000
+page_alloc: page_free_list=f0277fc0, 1016st page, page va=f03f8000
+page_alloc: page_free_list=f0277fb8, 1015st page, page va=f03f7000
+page_alloc: page_free_list=f0277fb0, 1014st page, page va=f03f6000
+page_alloc: page_free_list=f0277fa8, 1013st page, page va=f03f5000
+page_alloc: page_free_list=f0277fa0, 1012st page, page va=f03f4000
+page_alloc: page_free_list=f0277f98, 1011st page, page va=f03f3000
+page_alloc: page_free_list=f0277f90, 1010st page, page va=f03f2000
+page_alloc: page_free_list=f0277f88, 1009st page, page va=f03f1000
+page_alloc: page_free_list=f0277f80, 1008st page, page va=f03f0000
+page_alloc: page_free_list=f0277f78, 1007st page, page va=f03ef000
+page_alloc: page_free_list=f0277f70, 1006st page, page va=f03ee000
+page_alloc: page_free_list=f0277f68, 1005st page, page va=f03ed000
+page_alloc: page_free_list=f0277f60, 1004st page, page va=f03ec000
+page_alloc: page_free_list=f0277f58, 1003st page, page va=f03eb000
+page_alloc: page_free_list=f0277f50, 1002st page, page va=f03ea000
+page_alloc: page_free_list=f0277f48, 1001st page, page va=f03e9000
+page_alloc: page_free_list=f0277f40, 1000st page, page va=f03e8000
+page_alloc: page_free_list=f0277f38, 999st page, page va=f03e7000
+page_alloc: page_free_list=f0277f30, 998st page, page va=f03e6000
+page_alloc: page_free_list=f0277f28, 997st page, page va=f03e5000
+page_alloc: page_free_list=f0277f20, 996st page, page va=f03e4000
+page_alloc: page_free_list=f0277f18, 995st page, page va=f03e3000
+page_alloc: page_free_list=f0277f10, 994st page, page va=f03e2000
+page_alloc: page_free_list=f0277f08, 993st page, page va=f03e1000
+page_alloc: page_free_list=f0277f00, 992st page, page va=f03e0000
+page_alloc: page_free_list=f0277ef8, 991st page, page va=f03df000
+page_alloc: page_free_list=f0277ef0, 990st page, page va=f03de000
+page_alloc: page_free_list=f0277ee8, 989st page, page va=f03dd000
+page_alloc: page_free_list=f0277ee0, 988st page, page va=f03dc000
+page_alloc: page_free_list=f0277ed8, 987st page, page va=f03db000
+page_alloc: page_free_list=f0277ed0, 986st page, page va=f03da000
+page_alloc: page_free_list=f0277ec8, 985st page, page va=f03d9000
+page_alloc: page_free_list=f0277ec0, 984st page, page va=f03d8000
+page_alloc: page_free_list=f0277eb8, 983st page, page va=f03d7000
+page_alloc: page_free_list=f0277eb0, 982st page, page va=f03d6000
+page_alloc: page_free_list=f0277ea8, 981st page, page va=f03d5000
+page_alloc: page_free_list=f0277ea0, 980st page, page va=f03d4000
+page_alloc: page_free_list=f0277e98, 979st page, page va=f03d3000
+page_alloc: page_free_list=f0277e90, 978st page, page va=f03d2000
+page_alloc: page_free_list=f0277e88, 977st page, page va=f03d1000
+page_alloc: page_free_list=f0277e80, 976st page, page va=f03d0000
+page_alloc: page_free_list=f0277e78, 975st page, page va=f03cf000
+page_alloc: page_free_list=f0277e70, 974st page, page va=f03ce000
+page_alloc: page_free_list=f0277e68, 973st page, page va=f03cd000
+page_alloc: page_free_list=f0277e60, 972st page, page va=f03cc000
+page_alloc: page_free_list=f0277e58, 971st page, page va=f03cb000
+page_alloc: page_free_list=f0277e50, 970st page, page va=f03ca000
+page_alloc: page_free_list=f0277e48, 969st page, page va=f03c9000
+page_alloc: page_free_list=f0277e40, 968st page, page va=f03c8000
+page_alloc: page_free_list=f0277e38, 967st page, page va=f03c7000
+page_alloc: page_free_list=f0277e30, 966st page, page va=f03c6000
+page_alloc: page_free_list=f0277e28, 965st page, page va=f03c5000
+page_alloc: page_free_list=f0277e20, 964st page, page va=f03c4000
+page_alloc: page_free_list=f0277e18, 963st page, page va=f03c3000
+page_alloc: page_free_list=f0277e10, 962st page, page va=f03c2000
+page_alloc: page_free_list=f0277e08, 961st page, page va=f03c1000
+page_alloc: page_free_list=f0277e00, 960st page, page va=f03c0000
+page_alloc: page_free_list=f0277df8, 959st page, page va=f03bf000
+page_alloc: page_free_list=f0277df0, 958st page, page va=f03be000
+page_alloc: page_free_list=f0277de8, 957st page, page va=f03bd000
+page_alloc: page_free_list=f0277de0, 956st page, page va=f03bc000
+check pages array
+check phys mem
+check kernel stack
+check PDE permissions
+check_kern_pgdir() succeeded!
+boot_alloc memory at f02d5000, next memory allocate at f02d5000
+check_page_free_list() succeeded!
+page_alloc: page_free_list=f0277dd8, 955st page, page va=f03bb000
+page_alloc: page_free_list=f0277dd0, 954st page, page va=f03ba000
+page_alloc: page_free_list=f0277dc8, 953st page, page va=f03b9000
+page_alloc: page_free_list=f0277dd8, 955st page, page va=f03bb000
+check_page_installed_pgdir() succeeded!
+env_init begins.
+env_init finished. trap_init begins
+trap_init finished.
+SMP: CPU 0 found 2 CPU(s)
+boot_map_region:
+enabled interrupts: 1 2
+SMP: CPU 1 starting
+boot_map_region:
+page_alloc: page_free_list=f0277dd8, 955st page, page va=f03bb000
+[00000000] new env 00001000
+page_alloc: page_free_list=f0277dc8, 953st page, page va=f03b9000
+page_alloc: page_free_list=f0277dd0, 954st page, page va=f03ba000
+page_alloc: page_free_list=f0277dc0, 952st page, page va=f03b8000
+page_alloc: page_free_list=f0277db8, 951st page, page va=f03b7000
+page_alloc: page_free_list=f0277db0, 950st page, page va=f03b6000
+page_alloc: page_free_list=f0277da8, 949st page, page va=f03b5000
+page_alloc: page_free_list=f0277da0, 948st page, page va=f03b4000
+page_alloc: page_free_list=f0277d98, 947st page, page va=f03b3000
+page_alloc: page_free_list=f0277d90, 946st page, page va=f03b2000
+page_alloc: page_free_list=f0277d88, 945st page, page va=f03b1000
+page_alloc: page_free_list=f0277d80, 944st page, page va=f03b0000
+page_alloc: page_free_list=f0277d78, 943st page, page va=f03af000
+page_alloc: page_free_list=f0277d70, 942st page, page va=f03ae000
+[00000000] new env 00001001
+page_alloc: page_free_list=f0277d68, 941st page, page va=f03ad000
+page_alloc: page_free_list=f0277d60, 940st page, page va=f03ac000
+page_alloc: page_free_list=f0277d58, 939st page, page va=f03ab000
+page_alloc: page_free_list=f0277d50, 938st page, page va=f03aa000
+page_alloc: page_free_list=f0277d48, 937st page, page va=f03a9000
+page_alloc: page_free_list=f0277d40, 936st page, page va=f03a8000
+page_alloc: page_free_list=f0277d38, 935st page, page va=f03a7000
+page_alloc: page_free_list=f0277d30, 934st page, page va=f03a6000
+page_alloc: page_free_list=f0277d28, 933st page, page va=f03a5000
+page_alloc: page_free_list=f0277d20, 932st page, page va=f03a4000
+page_alloc: page_free_list=f0277d18, 931st page, page va=f03a3000
+page_alloc: page_free_list=f0277d10, 930st page, page va=f03a2000
+page_alloc: page_free_list=f0277d08, 929st page, page va=f03a1000
+[00000000] new env 00001002
+page_alloc: page_free_list=f0277d00, 928st page, page va=f03a0000
+page_alloc: page_free_list=f0277cf8, 927st page, page va=f039f000
+page_alloc: page_free_list=f0277cf0, 926st page, page va=f039e000
+page_alloc: page_free_list=f0277ce8, 925st page, page va=f039d000
+page_alloc: page_free_list=f0277ce0, 924st page, page va=f039c000
+page_alloc: page_free_list=f0277cd8, 923st page, page va=f039b000
+page_alloc: page_free_list=f0277cd0, 922st page, page va=f039a000
+page_alloc: page_free_list=f0277cc8, 921st page, page va=f0399000
+page_alloc: page_free_list=f0277cc0, 920st page, page va=f0398000
+page_alloc: page_free_list=f0277cb8, 919st page, page va=f0397000
+page_alloc: page_free_list=f0277cb0, 918st page, page va=f0396000
+page_alloc: page_free_list=f0277ca8, 917st page, page va=f0395000
+page_alloc: page_free_list=f0277ca0, 916st page, page va=f0394000
+[00000000] new env 00001003
+page_alloc: page_free_list=f0277c98, 915st page, page va=f0393000
+page_alloc: page_free_list=f0277c90, 914st page, page va=f0392000
+page_alloc: page_free_list=f0277c88, 913st page, page va=f0391000
+page_alloc: page_free_list=f0277c80, 912st page, page va=f0390000
+page_alloc: page_free_list=f0277c78, 911st page, page va=f038f000
+page_alloc: page_free_list=f0277c70, 910st page, page va=f038e000
+page_alloc: page_free_list=f0277c68, 909st page, page va=f038d000
+page_alloc: page_free_list=f0277c60, 908st page, page va=f038c000
+page_alloc: page_free_list=f0277c58, 907st page, page va=f038b000
+page_alloc: page_free_list=f0277c50, 906st page, page va=f038a000
+page_alloc: page_free_list=f0277c48, 905st page, page va=f0389000
+page_alloc: page_free_list=f0277c40, 904st page, page va=f0388000
+env_run begins.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 22
+user_mem_check success va: eebfde88, len: 22
+Hello, I am environment 00001000.
+env_run begins.
+eenv_run begins.
+nv_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfdeenv_pop_tf begins.
+get in trap.
+88, len: 22
+user_mem_check success va: eebfde88, len: 22
+Hello, I am environment 00001001.
+env_run begins.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+page_alloc: page_free_list=f0277c38, 903st page, page va=f0387000
+[00001003] new env 00001004
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+page_alloc: page_free_list=f0277c30, 902st page, page va=f0386000
+page_alloc: page_free_list=f0277c28, 901st page, page va=f0385000
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 22
+user_mem_check success va: eebfde88, len: 22
+Hello, I am environment 00001002.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+page_alloc: page_free_list=f0277c20, 900st page, page va=f0384000
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+page_alloc: page_free_lenv_pop_tf begins.
+get in trap.
+ist=f0277c18, 899st page, page va=f0383000
+env_run begins.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001001, iteration 0.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+env_pop_tf begins.
+get in trap.
+page_alloc: page_free_list=f0277c10, 898st page, page va=f0382000
+env_run begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+env_pop_tf begins.
+get in trap.
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001002, iteration 0.
+env_run begins.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: env_pop_tf begins.
+get in trap.
+eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001001, iteration 1.
+env_run begins.
+page_alloenv_pop_tf begins.
+get in trap.
+c: page_free_list=f0277c08, 897st page, page va=f0381000
+page_alloc: page_free_list=f0277c00, 896st page, page va=f0380000
+env_run begins.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001002, iteration 1.
+env_run begins.
+env_env_pop_tf begins.
+get in trap.
+env_run begins.
+pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+euser_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001001, iteration 2.
+env_run begins.
+nv_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+env_pop_tf begins.
+get in trap.
+user_mem_check success va: eebfde78, len: 14
+0: I am the parent!
+env_run begins.
+user_mem_check va: eebfde88, len: 2b
+userenv_pop_tf begins.
+get in trap.
+_mem_check success va: eebfde88, len: 2b
+Back in environment 00001002, iteration 2.
+env_run begins.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+1: I am the parent!
+env_run begins.
+env_pop_tf beenv_pop_tf begins.
+get in trap.
+env_run begins.
+gins.
+get in trap.
+user_mem_check va: eebfde78, len: 13
+user_mem_check success va: eebfde78, len: 13
+0: I am the child!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001002, iteration 3.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001001, iteration 3.
+env_run begins.
+user_mem_check va: eebfde78, len: env_pop_tf begins.
+get in trap.
+14
+user_mem_check success va: eebfde78, len: 14
+2: I am the parent!
+env_run begins.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+euser_mem_check success va: eebfde88, len: 2b
+Back in environment 00001002, iteration 4.
+env_run begins.
+nv_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 13
+user_mem_check success va: eebfde78, len: 13
+1: I am env_pop_tf begins.
+get in trap.
+the child!
+env_run begins.
+user_mem_check va: eebfde88, len: 22
+user_mem_check success va: eebfde88, len: 22
+All done in environment 00001002.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+[00001002] exiting gracefully
+env_pop_tf begins.
+get in trap.
+[00001002] free env 00001002
+env_run begins.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+3: I am the parent!
+env_run begins.
+env_pop_tf beginsenv_pop_tf begins.
+get in trap.
+env_run begins.
+.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001000, iteration 0.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 13
+env_pop_tf begins.
+get in trap.
+user_mem_check success va: eebfde78, len: 13
+2: I am the child!
+env_run begins.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check venv_pop_tf begins.
+get in trap.
+a: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001001, iteration 4.
+env_run begins.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+4: I am the parent!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 22
+user_mem_check success va: eebfde88, len: 22
+All done in environment 00001001.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_pop_tf begins.
+get in trap.
+[00001001] exiting gracefully
+[00001001] free env 00001001
+env_run begins.
+env_run begins.
+env_pop_tf begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 13
+user_mem_check success va: eebfde78, len: 13
+3: I am the child!
+env_run begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001000, iteration 1.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_runenv_pop_tf begins.
+get in trap.
+ begins.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+5: I am the parent!
+env_run begins.
+enenv_pop_tf begins.
+get in trap.
+env_run begins.
+v_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 13
+user_mem_check success va: eebfde78, len: 13
+4: I am the child!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 0env_pop_tf begins.
+get in trap.
+0001000, iteration 2.
+env_run begins.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+eenv_pop_tf begins.
+get in trap.
+nv_run begins.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+6: I am the parent!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 13
+user_mem_check success va: eebfde78, len: 13
+5: I am the child!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001000, iteration 3.
+env_run begins.
+env_pop_tf begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+7: I am the parent!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 13
+user_mem_check success va: eebfde78, len: 13
+6: I am the child!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_run begins.
+env_pop_tf begins.
+get ein trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001000, iteration 4.
+env_run begins.
+nv_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 13
+user_mem_check success va: eebfde78, len: 13
+7: I am the child!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 22
+user_mem_check success va: eebfde88, len: 22
+All done in environment 00001000.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+[00001000] exiting gracefully
+[00001000] free env 00001000
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+8: I am the parent!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 13
+user_mem_check success va: eebfde78, len: 13
+8: I am the child!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+9: I am the parent!
+env_run begins.
+env_run begins.
+env_pop_tf beginenv_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 13
+user_mem_check success va: eebfde78, len: 13
+9: I am the child!
+env_run begins.
+s.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+[00001003] exiting gracefully
+[00001003] free env 00001003
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+10: I am the child!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+11: I am the child!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+12: I am the child!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+13: I am the child!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+14: I am the child!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+15: I am the child!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+16: I am the child!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+17: I am the child!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+18: I am the child!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+19: I am the child!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+[00001004] exiting gracefully
+[00001004] free env 00001004
+No runnable environments in the system!
+Welcome to the JOS kernel monitor!
+Type 'help' for a list of commands.
+K> QEMU: Terminated
+

@@ -112,5 +112,6 @@ spin_unlock(struct spinlock *lk)
 	// x86 CPUs will not reorder loads/stores across locked instructions
 	// (vol 3, 8.2.2). Because xchg() is implemented using asm volatile,
 	// gcc will not reorder C statements across the xchg.
+	//内存乱序: https://www.cnblogs.com/cbscan/articles/4122337.html 
 	xchg(&lk->locked, 0);
 }

@@ -298,7 +298,13 @@ mem_init_mp(void)
 	//     Permissions: kernel RW, user NONE
 	//
 	// LAB 4: Your code here:
-
+	//从0开始也没什么问题,但是可以从1开始吗?
+	for (int i = 0; i < NCPU;i++)
+	{
+		//PTE_P?
+		boot_map_region(kern_pgdir, KSTACKTOP - i*(KSTKSIZE+KSTKGAP)-KSTKSIZE, KSTKSIZE, PADDR(percpu_kstacks[i]), PTE_P);
+	}
+		
 }
 
 // --------------------------------------------------------------
@@ -388,7 +394,7 @@ page_alloc(int alloc_flags)
 	//减法即加被减数的取反+1,于是结果为pages+1,然后地址运算要除以类型大小,这里为8
 	//因此结果为: 0-0xf0191000=0+~0xf0191000+1=266,792,960,再除以8=33349120
 	//或者说是0xffffffff-pages+1  / 8 ,因此会超过kva上限
-	cprintf("page_alloc: page_free_list=%x, %ust page, page va=%x\n", page_free_list, page_free_list - pages, page2pa(page_free_list) + KERNBASE);
+	//cprintf("page_alloc: page_free_list=%x, %ust page, page va=%x\n", page_free_list, page_free_list - pages, page2pa(page_free_list) + KERNBASE);
 
 	//cprintf("page_free_list=%x, %dst page, page vd=\n", page_free_list, page_free_list - pages,);
 	if (result == NULL)
@@ -418,7 +424,7 @@ void page_free(struct PageInfo *pp)
 	{
 		panic("page_free: pp->pp_ref is nonzero or pp->pp_link is not NULL!\n");
 	}
-	cprintf("page_free:%x, %dst page, page vd:%x\n", pp, pp-pages, page2kva(pp));
+	//cprintf("page_free:%x, %dst page, page vd:%x\n", pp, pp-pages, page2kva(pp));
 	pp->pp_link = page_free_list;
 	page_free_list = pp;
 	return;
