@@ -1,5 +1,6 @@
 # MyJOS
-
+一下是我写JOS的报告和分析。  
+# Bootloader和开机初始化
 ## Introduction
 lab1的内容或者目的：
 * 熟悉x86的汇编语言，搭建环境：下载make qemu等，熟悉PC的开机流程
@@ -227,8 +228,8 @@ gdtdesc:
 
    
 
-### mit6.828-lab2:memory management  
-#### Introduce  
+# mit6.828-lab2:memory management  
+## Introduce  
 这次实验，我们要为我们的操作系统写一个内存管理器。   
 
 内存管理器有两个组成部分：
@@ -237,26 +238,13 @@ gdtdesc:
 <!--more-->
 
 
-
----
-title: mit6.828-lab3
-top: false
-cover: false
-toc: true
-mathjax: true
-date: 2020-12-02 23:40:02
-password:
-summary:
-tags: [OS]
-categories:
----
-## mit6.828-lab3:user environments
+# mit6.828-lab3:user environments
 在这个lab里你将:
 * 完成基本的用户进程相关设施和数据结构(envs struct等). 
 * 加载一个程序镜像到内存并运行它.
 * 完成中断/异常,系统调用的相关设施,让kernel有能力处理中断/异常和系统调用.  
 <!-- more -->
-### partA:user environments and exception handling
+## partA:user environments and exception handling
 首先是用户相关的数据结构`Env`:
 ```c
 struct Env {
@@ -354,7 +342,7 @@ AX ← Pop();
 `env_pop_tf()`的作用是:转到`tf`代表的用户程序,先把`esp`设为这个`Trapframe`的地址,然后`popa`,即从`tf`中的`struct PushRegs tf_regs`弹出值到相应的寄存器,实现上下文的切换.然后再从`tf`中弹出`es`和`ds`的值,再跳过`tf_trapno and tf_errcode`,最后`iret`.    
 值得注意的是:栈是从上往下增长的,`tf`陷阱门是从下网上长的,因此把`esp`设为`tf`,`pop`弹出值的时候,`esp`回退(即往上),对应着`tf`往上依次读取成员.
 
-#### exercise2
+### exercise2
 完成几个函数:
 * `env_init()`:初始化所有的在`envs`数组中的`Enc`结构体,并把他们添加到`env_free_list`指针后面,之后调用`env_init_per_cpu`以设置段管理的相关硬件,它们分别是特权级0(kernel)和特权级3(user)的段.
 * `env_setup_vm()`:为新的`environment`分配一个页目录表,并且初始化新的地址空间中的内核部分(通过复制).
@@ -499,7 +487,7 @@ region_alloc(struct Env *e, void *va, size_t len)
 最后,这个函数从这个进程的初始栈映射一个页.  
 如果它遇到任何问题,则会`panic`,请思考它在什么情况下会出错.
 
-#### the task state segment
+### the task state segment
 处理器需要一个地方储存中断或者异常发生之前的处理器状态,比如`EIP`和`CS`的值,以便当异常或者中断执行完毕后可以恢复cpu的状态,并从原来的程序位置重新执行.  
 但是这个储存的地方,也必须免受权限不够的用户态程序影响,否则一些恶意程序会影响kernel.  
 因此x86处理器当特权级切换的时候也会切换栈,`TSS`任务状态段的目的便是服务这一过程,它指定了段选择符并指出这个栈在段中的位置,处理器会`push` `SS,ESP,EFLAGS,CS,EIP`和error code到这个栈里(error code只有某些中断或者异常会有,有的没有).随后处理器从中断描述符中加载`CS`和`EIP`以切换到新栈.  
@@ -555,12 +543,11 @@ I386硬件任务切换机制
 
 ```
 
-```
-内核栈的实现
-以linux内核为例,内核在创建进程并时,首先需要给进程分配task_struct结构体,在做这一步的时候内核实际上分配了两块连续的物理空间(一般是1个物理页),上边供堆栈使用,下边保存进程描述符task_struct.这个整体叫做进程的内核栈,因此task_struct是在进程内核栈内部的.
-当为内核栈分配地址空间的时候,分配一个页面(这里以8k为例)返回的地址是该该页面的低地址,而栈是由高地址向低地址增长的,栈顶指针只需将该内核栈的首地址+8k即可
 
-```
+内核栈的实现：  
+以linux内核为例,内核在创建进程并时,首先需要给进程分配task_struct结构体,在做这一步的时候内核实际上分配了两块连续的物理空间(一般是1个物理页),上边供堆栈使用,下边保存进程描述符task_struct.这个整体叫做进程的内核栈,因此task_struct是在进程内核栈内部的.   
+当为内核栈分配地址空间的时候,分配一个页面(这里以8k为例)返回的地址是该该页面的低地址,而栈是由高地址向低地址增长的,栈顶指针只需将该内核栈的首地址+8k即可   
+
 
 #### nested exceptions and interrupt
 在用户态和内核态处理器都可以接受异常和中断,但是x86只有从用户态切换到内核态的时候才会在储存cpu当前状态时自动切换栈(其他时候不会),然后再从中断向量表中invoke适当的中断或异常.  
@@ -746,15 +733,7 @@ syscall(int num, int check, uint32_t a1, uint32_t a2, uint32_t a3, uint32_t a4, 
 * 可变参数:
 
 
-
-##### 
-中断和异常一般是在程序运行过程中发生的,这个时候cpu执行 INT n指令,
-
-
-
-
-
-#### 杂
+#### 问题
 bootstack在哪里?   
 kernel的初始化代码`entry.S`里,由编译器分配  
 并且本质上esp的位置决定了栈的位置,因此只需要把esp置为想要的栈的位置就行了,栈的增长方式和具体细节由编译器提前决定(即设好规则,当什么时候,增长多少)
@@ -839,18 +818,8 @@ kernel通过把用户进程的`Trapframe`的`tf_esp`设为`USTKTOP`就行了,而
 * 系统调用
 系统调用的三种实现方法:   
 
----
-title: mit6.828 lab4
-top: false
-cover: false
-toc: true
-mathjax: true
-date: 2020-12-20 05:02:19
-password:
-summary:
-tags:
-categories:
----
+
+# 非抢占式多处理器
 
 # Introduce
 这个实验将完成多处理器中的进程调度.  
@@ -1128,11 +1097,8 @@ Unix提供fork()系统调用作为其过程创建原语。Unixfork()复制调用
 
 
 
-
-
-
 问题:
-# Call mp_main().  (Exercise for the reader: why the indirect call?)
+##### Call mp_main().  (Exercise for the reader: why the indirect call?)
 	#无页表?
 	movl    $mp_main, %eax
 	call    *%eax
