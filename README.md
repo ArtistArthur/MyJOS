@@ -1,5 +1,5 @@
 # MyJOS
-一下是我写JOS的报告和分析。  
+以下是我写JOS的报告和分析。  
 # Bootloader和开机初始化
 ## Introduction
 lab1的内容或者目的：
@@ -14,9 +14,7 @@ lab1的内容或者目的：
 * 还遇到一个头文件缺失的问题: https://github.com/Ebiroll/qemu_esp32/issues/12 通过添加头文件通过了
 学到的东西：  
 * 知道了qemu是个跑在linux上的模拟器，可以模拟出各种硬件状态。在这个实验中，qemu的作用是模拟出i386的环境，因为这个实验写出的操作系统是跑在i386上的。
-
-### b. 提交作业
-当完成代码后，可以在lab下 make grade,获得评分。  
+ 
 ## Part1：Bootstrap
 这个部分不写代码，主要是了解和学习汇编相关知识和开机引导流程
 ### a.汇编
@@ -219,27 +217,23 @@ gdtdesc:
 
 * boot/boot.S的功能有一个：
   * 从实模式进入32位保护模式，方法是把CR0最低位置位，即开启了保护模式，然后激活A20使得cpu可以寻址1MB以上的空间，之后设置一个段表，最后调用bootmain，进入main.c
-* 
-
-
 
 * stab的作用：
   * With the `-g` option, GCC puts in the .s' file additional debugging information, which is slightly transformed by the assembler and linker, and carried through into the nal executable. This debugging information describes features of the source file like line numbers, the types and scopes of variables, and function names, parameters, and scopes of variables, and function names, parameters, and scopes.  
 
    
 
-# mit6.828-lab2:memory management  
+# 内存管理  
 ## Introduce  
-这次实验，我们要为我们的操作系统写一个内存管理器。   
-
-内存管理器有两个组成部分：
+这个部分，我们要为我们的操作系统写一个内存管理器。   
+内存管理器由两个组成部分：
 1. 第一个组成部分是内核的物理内存分配器，可以让内核分配内存以及释放内存。我们写的这个分配器，以4K为一个操作单元（称作一个页）。我们的任务是管理记录物理内存状态的一个数据结构（引用数、下一个页地址等）。我们还会写一系列与分配和释放物理内存相关的函数。
 2. 第二个组成部分是虚拟内存管理组件，它将内核和用户使用的虚拟内存映射到物理内存中。x86的内存管理单元硬件将完成虚拟地址向物理地址的映射，通过一些页表。我们将根据提供的一个特殊布局来修改JOS，从而建立一个内存管理单元的页表系统。  
 <!--more-->
 
 
-# mit6.828-lab3:user environments
-在这个lab里你将:
+# 用户进程
+在这个部分将完成:
 * 完成基本的用户进程相关设施和数据结构(envs struct等). 
 * 加载一个程序镜像到内存并运行它.
 * 完成中断/异常,系统调用的相关设施,让kernel有能力处理中断/异常和系统调用.  
@@ -494,7 +488,6 @@ region_alloc(struct Env *e, void *va, size_t len)
 在JOS的实现中,当处理器从中断描述符中加载`CS`和`EIP`后,接下来的指令开始压入error code(如果cpu之前没有压的话),trap编号,然后`call _alltraps`,压入`ds es`然后`pushal`等等,目的是在kernel的栈上构造一个`Trapframe`,它保存了中断前进程的状态,在`trap()`中会复制这个结构体到`curenv->env_tf`中,以便之后恢复现场.
 以上的意思是:当转移控制权时,如果特权级发生变化,那么先要把当前处理器状态存入一个安全的`TSS`指定的栈中,再切换到目的栈,这个过程涉及到三个栈:当前栈,`TSS`指定的栈和将要转移到的代码段的栈.    
 
-```
 http://blog.chinaunix.net/uid-685034-id-2076045.html  
 堆栈切换和任务切换
 堆栈切换
@@ -539,10 +532,6 @@ I386硬件任务切换机制
 　　 像其他段一样,TSS也要在段描述表中有个表项.不过TSS只能在GDT中,而不能放在任何一个LDT中或IDT中.若通过一个段选择项访问一个TSS,而选择项中的TI位为1,就会产生一次GP异常.
 　　 另外,CPU中还增设一个任务寄存器TR,指向当前任务的TSS.相应地,还增加了一条指令LTR,对TR寄存器进行装入操作.像CS和DS一样,TR也有一个程序不可见部分,每当将一个段选择码装入到TR中时,CPU就会自动找到所选择的TSS描述项并将其装入到TR的程序不可见部分,以加速以后对该TSS段的访问.
 　　 还有,在IDT表中,除了中断门、陷阱门和调用门以为,还定义了一种任务门.任务门中包含一个TSS段选择码.当CPU因中断而穿过一个任务门时,就会将任务门中的选择码自动装入TR,使TR指向新的TSS,并完成任务的切换.CPU还可以通过JMP和CALL指令实现任务切换,当跳转或调用的目标段实际上指向GDT表中的一个TSS描述项时,就会引起一次任务切换.
-
-
-```
-
 
 内核栈的实现：  
 以linux内核为例,内核在创建进程并时,首先需要给进程分配task_struct结构体,在做这一步的时候内核实际上分配了两块连续的物理空间(一般是1个物理页),上边供堆栈使用,下边保存进程描述符task_struct.这个整体叫做进程的内核栈,因此task_struct是在进程内核栈内部的.   
