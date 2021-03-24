@@ -29,21 +29,6 @@ sched_yield(void)
 	// below to halt the cpu.
 
 	// LAB 4: Your code here.
-	/*
-	没有考虑curenv=NULL的时候
-	int index = ENVX(thiscpu->cpu_env->env_id);
-	for (int i = index+1,i%=NENV; i != index; i++, i %=NENV)
-	{
-		if (env[i].env_status == ENV_RUNNABLE)
-		{
-			env_run(env[i]);
-		}
-		if(i==index&&env[i]==ENV_RUNNING)
-		{
-			env_run(env[i]);
-		}
-	}
-	*/
 	int index = 0;
 	if (curenv!=NULL)
 	{

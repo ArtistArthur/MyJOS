@@ -4711,4 +4711,1307 @@ No runnable environments in the system!
 Welcome to the JOS kernel monitor!
 Type 'help' for a list of commands.
 K> QEMU: Terminated
++ as kern/entry.S
++ cc kern/entrypgdir.c
++ cc kern/init.c
++ cc kern/console.c
++ cc kern/monitor.c
++ cc kern/pmap.c
++ cc kern/env.c
++ cc kern/kclock.c
++ cc kern/picirq.c
++ cc kern/printf.c
++ cc kern/trap.c
++ as kern/trapentry.S
++ cc kern/sched.c
++ cc kern/syscall.c
++ cc kern/kdebug.c
++ cc lib/printfmt.c
++ cc lib/readline.c
++ cc lib/string.c
++ as kern/mpentry.S
++ cc kern/mpconfig.c
++ cc kern/lapic.c
++ cc kern/spinlock.c
++ cc[USER] lib/console.c
++ cc[USER] lib/libmain.c
++ cc[USER] lib/exit.c
++ cc[USER] lib/panic.c
++ cc[USER] lib/printf.c
++ cc[USER] lib/printfmt.c
++ cc[USER] lib/readline.c
++ cc[USER] lib/string.c
++ cc[USER] lib/syscall.c
++ cc[USER] lib/pgfault.c
++ as[USER] lib/pfentry.S
++ cc[USER] lib/fork.c
++ cc[USER] lib/ipc.c
++ ar obj/lib/libjos.a
++ cc[USER] user/hello.c
++ as[USER] lib/entry.S
++ ld obj/user/hello
++ cc[USER] user/buggyhello.c
++ ld obj/user/buggyhello
++ cc[USER] user/buggyhello2.c
++ ld obj/user/buggyhello2
++ cc[USER] user/evilhello.c
++ ld obj/user/evilhello
++ cc[USER] user/testbss.c
++ ld obj/user/testbss
++ cc[USER] user/divzero.c
++ ld obj/user/divzero
++ cc[USER] user/breakpoint.c
++ ld obj/user/breakpoint
++ cc[USER] user/softint.c
++ ld obj/user/softint
++ cc[USER] user/badsegment.c
++ ld obj/user/badsegment
++ cc[USER] user/faultread.c
++ ld obj/user/faultread
++ cc[USER] user/faultreadkernel.c
++ ld obj/user/faultreadkernel
++ cc[USER] user/faultwrite.c
++ ld obj/user/faultwrite
++ cc[USER] user/faultwritekernel.c
++ ld obj/user/faultwritekernel
++ cc[USER] user/idle.c
++ ld obj/user/idle
++ cc[USER] user/yield.c
++ ld obj/user/yield
++ cc[USER] user/dumbfork.c
++ ld obj/user/dumbfork
++ cc[USER] user/stresssched.c
++ ld obj/user/stresssched
++ cc[USER] user/faultdie.c
++ ld obj/user/faultdie
++ cc[USER] user/faultregs.c
++ ld obj/user/faultregs
++ cc[USER] user/faultalloc.c
++ ld obj/user/faultalloc
++ cc[USER] user/faultallocbad.c
++ ld obj/user/faultallocbad
++ cc[USER] user/faultnostack.c
++ ld obj/user/faultnostack
++ cc[USER] user/faultbadhandler.c
++ ld obj/user/faultbadhandler
++ cc[USER] user/faultevilhandler.c
++ ld obj/user/faultevilhandler
++ cc[USER] user/forktree.c
++ ld obj/user/forktree
++ cc[USER] user/sendpage.c
++ ld obj/user/sendpage
++ cc[USER] user/spin.c
++ ld obj/user/spin
++ cc[USER] user/fairness.c
++ ld obj/user/fairness
++ cc[USER] user/pingpong.c
++ ld obj/user/pingpong
++ cc[USER] user/pingpongs.c
++ ld obj/user/pingpongs
++ cc[USER] user/primes.c
++ ld obj/user/primes
++ ld obj/kern/kernel
++ as boot/boot.S
++ cc -Os boot/main.c
++ ld boot/boot
++ mk obj/kern/kernel.img
+sed "s/localhost:1234/localhost:25000/" < .gdbinit.tmpl > .gdbinit
+qemu-system-i386 -drive file=obj/kern/kernel.img,index=0,media=disk,format=raw -serial mon:stdio -gdb tcp::25000 -D qemu.log -smp 2 
+VNC server running on `127.0.0.1:5900'
+6828 decimal is 15254 octal!
+Physical memory: 131072K available, base = 640K, extended = 130432K, npages =32768
+end: f0274008
+sizeof(Trapframe)=68.
+boot_alloc a page for kern_pgdir
+bootstack=f0118000, bootstacktop=f0120000, ebp=f011ffd8, &n=f011ffbc
+boot_alloc memory at f0275000, next memory allocate at f0276000
+sizeof(struct PageInfo*)=4, sizeof(struct PageInfo)=8, pages=0, sizeof(struct PageInfo)*npages=256K
+boot_alloc pages for pages
+boot_alloc memory at f0276000, next memory allocate at f02b6000
+pages=f0276000
+boot_alloc a page for envs
+boot_alloc memory at f02b6000, next memory allocate at f02d5000
+sizeof(struct Env*)=4, envs=f02b6000,sizeof(struct Env)=124, NENV=1024, sizeof(struct Env)*NENV=124K
+page_init begins
+boot_alloc memory at f02d5000, next memory allocate at f02d5000
+page_free_list=f02b5ff8, 32767st page, page va=f7fff000
+page_init ends
+boot_alloc memory at f02d5000, next memory allocate at f02d5000
+check_page_free_list() succeeded!
+number of free pages=32201
+page_alloc:out of free memory
+page_alloc:out of free memory
+check_page_alloc() succeeded!
+page_alloc:out of free memory
+page_alloc:out of free memory
+page_alloc:out of free memory
+page_alloc:out of free memory
+page_alloc:out of free memory
+page_alloc:out of free memory
+boot_map_region:
+boot_map_region:
+check_page() succeeded!
+map kern_pgdir`s UPAGES as pages(maped size 4MB):
+boot_map_region:
+map kern_pgdir`s UENVS as envs(maped size 4MB):
+boot_map_region:
+map kern_pgdir`s kernelstack as bootstack=f0118000.
+boot_map_region:
+boot_map_region:
+boot_map_region:
+boot_map_region:
+boot_map_region:
+boot_map_region:
+boot_map_region:
+boot_map_region:
+boot_map_region:
+map kern_pgdir`s KERNBASE=f0000000 as 00000000,  size=0fffffffB=271MB.
+boot_map_region:
+check pages array
+check phys mem
+check kernel stack
+check PDE permissions
+check_kern_pgdir() succeeded!
+boot_alloc memory at f02d5000, next memory allocate at f02d5000
+check_page_free_list() succeeded!
+check_page_installed_pgdir() succeeded!
+env_init begins.
+env_init finished. trap_init begins
+trap_init finished.
+SMP: CPU 0 found 2 CPU(s)
+boot_map_region:
+enabled interrupts: 1 2
+SMP: CPU 1 starting
+boot_map_region:
+[00000000] new env 00001000
+[00000000] new env 00001001
+[00000000] new env 00001002
+[00000000] new env 00001003
+env_run begins.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 22
+user_mem_check success va: eebfde8env_pop_tf begins.
+get in trap.
+8, len: 22
+Hello, I am environment 00001000.
+env_run begins.
+user_mem_check va: eebfde88, len: 22
+user_mem_check success va: eebfde88, len: 22
+Hello, I am environment 00001001.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_pop_tf begins.
+get in trap.
+[00001003] new env 00001004
+env_run begins.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 22
+user_mem_check success va: eebfde88, len: 22
+Hello, I am environment 00001002.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_env_pop_tf begins.
+get in trap.
+run begins.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: env_pop_tf begins.
+get in trap.
+eebfde88, len: 2b
+Back in environment 00001001, iteration 0.
+env_run begins.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001002, iteration 0.
+env_run begins.
+env_pop_tf begins.
+get in trenv_pop_tf begins.
+get in trap.
+env_run begins.
+ap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_memenv_pop_tf begins.
+get in trap.
+_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001001, iteration 1.
+env_run begins.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001002, iteration 1.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001001, iteration 2.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+genv_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001002, iteration 2.
+env_run begins.
+et in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+0: I am the parent!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001001, iteration 3.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+geenv_pop_tf begins.
+get in trap.
+env_run begins.
+t in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 13
+user_mem_check success va: eebfde78, len: 13
+0: I am the child!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001002, iteration 3.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+1: I am the parent!
+env_ruget in trap.
+n begins.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001001, iteration 4.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 13
+user_mem_check success va: eebfde78, len: 13
+1: I am the child!
+env_pop_tf begins.
+get in trap.
+env_run begins.
+user_mem_check va: eebfde88, len: 22
+user_mem_check success va: eebfde88, len: 22
+env_pop_tf begins.
+get in trap.
+All done in environment 00001001.
+env_run begins.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+[00001001] exiting gracefully
+[00001001] free env 00001001
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+2: I am the parent!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001000, iteration 0.
+eenv_pop_tf begins.
+get in trap.
+nv_run begins.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 13
+user_mem_check success va: eebfde78, len: 13
+2: I am the child!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+3: I am the parent!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+env_pop_tf begins.
+get in trap.
+Back in environment 00001002, iteration 4.
+env_run begins.
+user_mem_check va: eebfde78, len: 13
+user_mem_check success va: eebfde78, len: 13
+3: I am the child!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 22
+euser_mem_check success va: eebfde88, len: 22
+All done in environment 00001002.
+env_run begins.
+nv_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+[00001002] exiting gracefully
+env_pop_tf begins.
+get in trap.
+[00001002] free env 00001002
+env_run begins.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+4: I am the parent!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001000, iteration 1.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 13
+user_mem_check success va: eebfde78, len: 13
+env_pop_tf begins.
+get in trap.
+4: I am the child!
+env_run begins.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+5: I am the parent!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001000, iteration 2.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 13
+user_mem_check success va: eebfde78, len: 13
+5: I am the childenv_pop_tf begins.
+get in trap.
+!
+env_run begins.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+6: I am the parent!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001000, iteration 3.
+env_run begins.
+env_pop_tf begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trenv_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001000, iteration 4.
+env_run begins.
+ap.
+user_mem_check va: eebfde78, len: 13
+user_mem_check success va: eebfde78, len: 13
+6: I am the child!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 22
+user_mem_check success va: eebfde88, len: 22
+All done in environment 00001000.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+7: I am the parent!
+env_run begins.
+[00001000] exiting gracefully
+[00001000] free env 00001000
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 13
+user_mem_check success va: eebfde78, len: 13
+7: I am the child!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+env_pop_tf begins.
+get in trap.
+8: I am the parent!
+env_run begins.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 13
+user_mem_check success va: eebfde78, len: 13
+8: I am the child!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+9: I am the parent!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 13
+user_mem_check success va: eebfde78, len: 13
+9: I am the child!
+env_pop_tf begins.
+get in trap.
+env_run begins.
+[00001003] exiting gracefully
+[00001003] free env 00001003
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+10: I am the child!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+11: I am the child!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+12: I am the child!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+13: I am the child!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+14: I am the child!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+15: I am the child!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+16: I am the child!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+17: I am the child!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+18: I am the child!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+19: I am the child!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+[00001004] exiting gracefully
+[00001004] free env 00001004
+No runnable environments in the system!
+Welcome to the JOS kernel monitor!
+Type 'help' for a list of commands.
+K> QEMU: Terminated
+qemu-system-i386 -drive file=obj/kern/kernel.img,index=0,media=disk,format=raw -serial mon:stdio -gdb tcp::25000 -D qemu.log -smp 2 
+VNC server running on `127.0.0.1:5900'
+6828 decimal is 15254 octal!
+Physical memory: 131072K available, base = 640K, extended = 130432K, npages =32768
+end: f0274008
+sizeof(Trapframe)=68.
+boot_alloc a page for kern_pgdir
+bootstack=f0118000, bootstacktop=f0120000, ebp=f011ffd8, &n=f011ffbc
+boot_alloc memory at f0275000, next memory allocate at f0276000
+sizeof(struct PageInfo*)=4, sizeof(struct PageInfo)=8, pages=0, sizeof(struct PageInfo)*npages=256K
+boot_alloc pages for pages
+boot_alloc memory at f0276000, next memory allocate at f02b6000
+pages=f0276000
+boot_alloc a page for envs
+boot_alloc memory at f02b6000, next memory allocate at f02d5000
+sizeof(struct Env*)=4, envs=f02b6000,sizeof(struct Env)=124, NENV=1024, sizeof(struct Env)*NENV=124K
+page_init begins
+boot_alloc memory at f02d5000, next memory allocate at f02d5000
+page_free_list=f02b5ff8, 32767st page, page va=f7fff000
+page_init ends
+boot_alloc memory at f02d5000, next memory allocate at f02d5000
+check_page_free_list() succeeded!
+number of free pages=32201
+page_alloc:out of free memory
+page_alloc:out of free memory
+check_page_alloc() succeeded!
+page_alloc:out of free memory
+page_alloc:out of free memory
+page_alloc:out of free memory
+page_alloc:out of free memory
+page_alloc:out of free memory
+page_alloc:out of free memory
+boot_map_region:
+boot_map_region:
+check_page() succeeded!
+map kern_pgdir`s UPAGES as pages(maped size 4MB):
+boot_map_region:
+map kern_pgdir`s UENVS as envs(maped size 4MB):
+boot_map_region:
+map kern_pgdir`s kernelstack as bootstack=f0118000.
+boot_map_region:
+boot_map_region:
+boot_map_region:
+boot_map_region:
+boot_map_region:
+boot_map_region:
+boot_map_region:
+boot_map_region:
+boot_map_region:
+map kern_pgdir`s KERNBASE=f0000000 as 00000000,  size=0fffffffB=271MB.
+boot_map_region:
+check pages array
+check phys mem
+check kernel stack
+check PDE permissions
+check_kern_pgdir() succeeded!
+boot_alloc memory at f02d5000, next memory allocate at f02d5000
+check_page_free_list() succeeded!
+check_page_installed_pgdir() succeeded!
+env_init begins.
+env_init finished. trap_init begins
+trap_init finished.
+SMP: CPU 0 found 2 CPU(s)
+boot_map_region:
+enabled interrupts: 1 2
+SMP: CPU 1 starting
+boot_map_region:
+[00000000] new env 00001000
+[00000000] new env 00001001
+[00000000] new env 00001002
+[00000000] new env 00001003
+env_run begins.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 22
+user_mem_check success va: eebfde88, len: 22
+Hello, I am environment 00001000.
+env_run begins.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 22
+user_mem_check success va: eebfde88, len: 22
+Hello, I am environment 00001001.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get ienv_pop_tf begins.
+get in trap.
+[00001003] new env 00001004
+env_run begins.
+n trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 22
+user_mem_check success va: eebfde88, len: 22
+Hello, I am envenv_pop_tf begins.
+get in trap.
+ironment 00001002.
+env_run begins.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001001, iteration 0.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+get in trap.
+Back in environment 00001002, iteration 0.
+env_run begins.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001001, iteration 1.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001002, iteration 1.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+euser_mem_check success va: eebfde88, len: 2b
+nv_pop_tf begins.
+get in trap.
+Back in environment 00001001, iteration 2.
+env_run begins.
+env_run begins.
+env_pop_tf begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+0: I am the parent!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001002, iteration 2.
+env_run begins.
+env_pop_tf begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001001, iteration 3.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 13
+user_mem_check success va: eebfde78, len: 13
+0: I am the child!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in tenv_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001002, iteration 3.
+rap.
+env_run begins.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+1: I am the parent!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001001, iteration 4.
+env_run begins.
+env_pop_tf begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 22
+user_mem_check suget in trap.
+ccess va: eebfde88, len: 22
+All done in environment 00001001.
+env_run begins.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+[00001001] exiting gracefully
+[00001001] free env 00001001
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 13
+user_mem_check success va: eebfde78, len: 13
+1: I am the child!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Backenv_pop_tf begins.
+get in trap.
+ in environment 00001000, iteration 0.
+env_run begins.
+env_run begins.
+env_pop_tf begins.
+get in env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+2: I am the parent!
+env_run begins.
+trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001002, iteration 4.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+user_mem_check va: eebfde78, len: 13
+user_mem_check success va: eebfde78, len: 13
+env_pop_tf begins.
+get in trap.
+2: I am the child!
+env_run begins.
+user_mem_check va: eebfde88, len: 22
+user_mem_check success va: eebefde88, len: 22
+All done in environment 00001002.
+env_run begins.
+nv_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+[00001002] exiting gracefully
+[00001002] free env 00001002
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+3: I amenv_pop_tf begins.
+get in trap.
+ the parent!
+env_run begins.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+env_pop_tf begins.
+get in trap.
+Back in environment 00001000, iteration 1.
+env_run begins.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 13
+user_mem_check success va: eebfde78, len: 13
+3: I am the child!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+4: I am the parent!
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_run begins.
+env_pop_tf begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001000, iteration 2.
+env_run begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 13
+user_mem_check success va: eebfde78, len: 13
+4: I am the child!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 1env_pop_tf begins.
+get in trap.
+4
+user_mem_check success va: eebfde78, len: 14
+5: I am the parent!
+env_run begins.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001000, iteration 3.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 13
+user_mem_check success va: eebfde78, len: 13
+5: I am the child!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 2b
+user_mem_check success va: eebfde88, len: 2b
+Back in environment 00001000, iteration 4.
+env_run begins.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+6: I am the parent!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde88, len: 22
+user_mem_check success va: eebfde88, len: 22
+All done in environment 00001000.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+[00001000env_pop_tf begins.
+get in trap.
+] exiting gracefully
+[00001000] free env 00001000
+env_run begins.
+user_mem_check va: eenv_pop_tf begins.
+get in trap.
+ebfde78, len: 13
+user_mem_check success va: eebfde78, len: 13
+6: I am the child!
+env_run begins.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+7: I am the parent!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+eget in trap.
+user_mem_check va: eebfde78, len: 13
+nv_pop_tf begins.
+get in trap.
+user_mem_check success va: eebfde78, len: 13
+7: I am the child!
+env_run begins.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+8: I am the parent!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 13
+user_mem_check success va: eebfde78, len: 13
+8: I am the child!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len:env_pop_tf begins.
+get in trap.
+ 14
+user_mem_check success va: eebfde78, len: 14
+9: I am the parent!
+env_run begins.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 13
+user_mem_check success va: eebfde78, len: 13
+9: I am the child!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+[00001003] exiting gracefully
+[00001003] free env 0000100env_pop_tf begins.
+get in trap.
+3
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+10: I am the child!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+11: I am the child!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+12: I am the child!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+13: I am the child!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+14: I am the child!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+15: I am the child!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+16: I am the child!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+17: I am the child!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+18: I am the child!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+user_mem_check va: eebfde78, len: 14
+user_mem_check success va: eebfde78, len: 14
+19: I am the child!
+env_run begins.
+env_pop_tf begins.
+get in trap.
+env_run begins.
+env_pop_tf begins.
+get in trap.
+[00001004] exiting gracefully
+[00001004] free env 00001004
+No runnable environments in the system!
+Welcome to the JOS kernel monitor!
+Type 'help' for a list of commands.
+K> QEMU: Terminated
 
